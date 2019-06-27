@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "158026407103",
+    "firebase_url": "https://apartment-finder-ad90f.firebaseio.com",
+    "project_id": "apartment-finder-ad90f",
+    "storage_bucket": "apartment-finder-ad90f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158026407103:android:4605d2cc51c9c717",
+        "android_client_info": {
+          "package_name": "com.example.apartment_finder2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158026407103-1d7mir1iaf8u29qdf9gm21j2ft5embdf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.apartment_finder2",
+            "certificate_hash": "d647aaa42a4b29497b1c543521cc754fc8d4a679"
+          }
+        },
+        {
+          "client_id": "158026407103-2onq1qte161isok9gfdp83fbs03722t2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.apartment_finder2",
+            "certificate_hash": "cd3ecb0f6df0741b9482a684c21fda8c91ba1156"
+          }
+        },
+        {
+          "client_id": "158026407103-d5atclkouh6sieb6bisud8ujuljbhmi1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyyUbMqagVn2c9zC1GAk5qAFi6MLXNbXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158026407103-d5atclkouh6sieb6bisud8ujuljbhmi1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

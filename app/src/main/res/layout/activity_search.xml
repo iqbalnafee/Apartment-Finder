@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Search">
+
+    <TextView
+        android:id="@+id/heading_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Search"
+        android:textSize="24sp"
+        android:textColor="@color/com_facebook_button_background_color"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/search_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:fontFamily="@font/nunito_semibold"
+        android:inputType="textPersonName"
+        android:hint="Search Here"
+        android:textAlignment="center"
+        android:textColor="#999999"
+        android:padding="10dp"/>
+
+
+
+    <ImageButton
+        android:id="@+id/search_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/search_field"
+        android:background="@android:color/background_light"
+        android:padding="10dp"
+        app:srcCompat="@drawable/search_btn_bg"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="85dp"
+        android:layout_alignTop="@+id/search_field"
+        android:imeOptions="actionDone"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/result_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_field"
+        android:layout_marginTop="50dp"></android.support.v7.widget.RecyclerView>
+
+   <!-- <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/search_btn" />-->
+
+</RelativeLayout>
