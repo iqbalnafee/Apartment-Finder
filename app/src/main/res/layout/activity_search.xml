@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Search">
+    tools:context=".Search"
+    >
 
     <TextView
         android:id="@+id/heading_label"
@@ -17,19 +18,29 @@
         android:textSize="24sp"
         android:textColor="@color/com_facebook_button_background_color"/>
 
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/search_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="80dp"
         android:ems="10"
-        android:fontFamily="@font/nunito_semibold"
         android:inputType="textPersonName"
         android:hint="Search Here"
         android:textAlignment="center"
-        android:textColor="#999999"
+        android:textColor="@color/authui_colorPrimary"
         android:padding="10dp"/>
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_btn"
+        android:layout_marginBottom="180dp"
+        android:divider="@android:color/holo_green_light"
+        android:dividerHeight="5dp"
+        android:clickable="true"
+        android:choiceMode="singleChoice"/>
+
 
 
 
@@ -53,10 +64,6 @@
         android:layout_below="@+id/search_field"
         android:layout_marginTop="50dp"></android.support.v7.widget.RecyclerView>
 
-   <!-- <ListView
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_below="@id/search_btn" />-->
+
 
 </RelativeLayout>
