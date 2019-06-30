@@ -2,7 +2,10 @@ package com.example.apartment_finder2;
 
 public class Upload {
     private String mName;
-    private String mImageUrl;
+    private String mImageUrl1;
+    private String mImageUrl2;
+    private String mImageUrl3;
+    private String mImageUrl4;
     private String mPrice;
     private String mNumber_Of_Bedrooms;
     private String mLocation;
@@ -10,16 +13,17 @@ public class Upload {
         //empty constructor needed
     }
 
-    public Upload(String name,String price,String no_bedrooms,String Loc,String imageUrl) {
-        if (name.trim().equals("")) {
-            name = "No Name";
-        }
+    public Upload(String price,String no_bedrooms,String Loc,String imageUrl1,String imageUrl2,String imageUrl3,String imageUrl4) {
 
-        mName = name;
+
+
         mPrice=price;
         mNumber_Of_Bedrooms=no_bedrooms;
         mLocation=Loc;
-        mImageUrl=imageUrl;
+        mImageUrl1=imageUrl1;
+        mImageUrl2=imageUrl2;
+        mImageUrl3=imageUrl3;
+        mImageUrl4=imageUrl4;
     }
 
     public String getName() {
@@ -55,10 +59,19 @@ public class Upload {
     }
 
     public String getmImageUrl() {
-        return mImageUrl;
+        return mImageUrl1;
+    }
+    public String getmImageUrl2() {
+        return mImageUrl2;
+    }
+    public String getmImageUrl3() {
+        return mImageUrl3;
+    }
+    public String getmImageUr4() {
+        return mImageUrl4;
     }
 
     public void setmImageUrl(String ImageUrl) {
-        this.mImageUrl = ImageUrl;
+        this.mImageUrl1 = ImageUrl;
     }
 }
