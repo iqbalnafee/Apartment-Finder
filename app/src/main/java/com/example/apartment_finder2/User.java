@@ -26,7 +26,7 @@ class User {
         }
 
         return  uniqueChatRef;
-    }
+    }*/
 
     private String cleanEmailAddress(String Email) {
         return  Email.replace(".","-");
@@ -63,6 +63,6 @@ class User {
 
     public void setmRecipientId(String mRecipientId) {
         this.mRecipientId = mRecipientId;
-    }*/
+    }
 }
 
