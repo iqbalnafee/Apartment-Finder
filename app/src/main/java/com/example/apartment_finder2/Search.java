@@ -2,22 +2,33 @@ package com.example.apartment_finder2;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Observable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,41 +39,132 @@ import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Search extends AppCompatActivity {
 
-    //private EditText mSearchField;
-    private AutoCompleteTextView mSearchField;
+    private EditText mSearchField;
     private ImageButton mSearchBtn;
-    private ListView list;
     private RelativeLayout mR;
     private RecyclerView mResultList;
+    private  ListView mlistView;
+    private FirebaseDatabase mdataBase;
 
-    private DatabaseReference mUserDatabase;
-    //Upload up=new Upload();
-    String Location[];
+    //private ListViewAdapter adapter;
+
+    private DatabaseReference mUserDatabase,ref;
+    Upload up;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        mR = findViewById(R.id.ClickOnR);
+        mlistView=findViewById(R.id.listView);
         mUserDatabase = FirebaseDatabase.getInstance().getReference("uploads");
+        mdataBase=FirebaseDatabase.getInstance();
+        ref=mdataBase.getReference("uploads");
 
-        mSearchField = (AutoCompleteTextView) findViewById(R.id.search_field);
+        mSearchField =  findViewById(R.id.search_field);
         mSearchBtn = (ImageButton) findViewById(R.id.search_btn);
 
         mResultList = (RecyclerView) findViewById(R.id.result_list);
         mResultList.setHasFixedSize(true);
-        mResultList.setLayoutManager(new LinearLayoutManager(this));
+        //mResultList.setLayoutManager(new LinearLayoutManager(this));
+
+        final List<String> list = new ArrayList<String>();
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+        up=new Upload();
+        //this.arrayAdapterListView();
+
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds:dataSnapshot.getChildren())
+                {
+                    up=ds.getValue(Upload.class);
+                    list.add(up.getmLocation());
+                }
+                Set<String> set = new HashSet<>(list);
+                list.clear();
+                list.addAll(set);
+                mlistView.setAdapter(arrayAdapter);
+                mlistView.setVisibility(View.INVISIBLE);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
+                String text=mlistView.getItemAtPosition(index).toString();
+                //Object clickItemObj = adapterView.getAdapter().getItem(index);
+                Toast.makeText(Search.this, "You clicked " + text, Toast.LENGTH_SHORT).show();
+                mSearchField.setText(text);
+                mlistView.setVisibility(View.INVISIBLE);
+                firebaseUserSearch(text);
+            }
+        });
+       mSearchField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+                ArrayList<String> tempList=new ArrayList<>();
+
+                for(String temp: list)
+                {
+                    if(temp.toLowerCase().contains(s.toString()))
+                    {
+                        tempList.add(temp);
+                    }
+                }
+                ArrayAdapter<String> adapter=new ArrayAdapter<>(Search.this,android.R.layout.simple_list_item_1,tempList);
+                mlistView.setAdapter(adapter);
+                mlistView.setVisibility(View.VISIBLE);
+                String searchText = mSearchField.getText().toString();
+
+                if (TextUtils.isEmpty(searchText))
+                {
+                    mlistView.setVisibility(View.INVISIBLE);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+
+            }
+        });
 
 
 
@@ -71,17 +173,17 @@ public class Search extends AppCompatActivity {
             public void onClick(View view) {
                 hideKeyboard(Search.this);
                 String searchText = mSearchField.getText().toString();
-                //Matcher m = Pattern.compile(Pattern.quote(mSearchField.getText().toString()), Pattern.CASE_INSENSITIVE).matcher("");
-                //m.reset(searchText);
                 firebaseUserSearch(searchText);
-
             }
         });
 
     }
 
-    private void firebaseUserSearch(String searchText) {
 
+
+    private void firebaseUserSearch(String searchText) {
+        hideKeyboard(Search.this);
+        mResultList.setLayoutManager(new LinearLayoutManager(this));
         Toast.makeText(Search.this, "Started Search", Toast.LENGTH_LONG).show();
 
         Query firebaseSearchQuery = mUserDatabase.orderByChild("mLocation").startAt(searchText).endAt(searchText+ "\uf8ff");
@@ -121,26 +223,43 @@ public class Search extends AppCompatActivity {
             TextView upload_no_bed = (TextView) mView.findViewById(R.id.bedrooms);
             ImageView upload_image = (ImageView) mView.findViewById(R.id.resulted_image);
 
-
             upload_price.setText(Price);
             upload_no_bed.setText(Number_Bedrooms);
             Glide.with(ctx).load(userImage).into(upload_image);
-
-
-
         }
 
     }
 
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
         View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
         if (view == null) {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+    private void arrayAdapterListView()
+    {
+        setTitle("dev2qa.com - ArrayAdapter List View Example");
+
+        List<String> dataList = new ArrayList<String>();
+        dataList.add("Java");
+        dataList.add("Android");
+        dataList.add("JavaEE");
+        dataList.add("JSP");
+        dataList.add("JDBC");
+
+        ListView listView = (ListView)findViewById(R.id.listView);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataList);
+        listView.setAdapter(arrayAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
+                Object clickItemObj = adapterView.getAdapter().getItem(index);
+                Toast.makeText(Search.this, "You clicked " + clickItemObj.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
