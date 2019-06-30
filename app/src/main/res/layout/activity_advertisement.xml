@@ -1,33 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     android:padding="16dp"
     tools:context=".Advertisement">
 
-    <Button
-        android:id="@+id/button_choose_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Choose File"
-        android:textStyle="bold"
-        style="@style/com_facebook_button_like"/>
-    <EditText
-        android:id="@+id/edit_text_file_name"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/button_choose_image"
-        android:layout_toRightOf="@id/button_choose_image"
-        android:hint="Enter File Name"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
     <EditText
         android:id="@+id/flat_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_text_file_name"
         android:textAlignment="center"
         android:hint="Price in Tk" />
     <EditText
@@ -44,30 +35,133 @@
         android:layout_below="@id/no_of_bedRooms"
         android:textAlignment="center"
         android:hint="Location" />
-    <Button
-        android:id="@+id/button_upload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Upload"
-        android:layout_marginBottom="15dp"/>
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_above="@+id/button_upload"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="16dp"/>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/image_to_upload"
-        android:layout_below="@+id/edit_text_file_name"
-        android:layout_above="@+id/progress_bar"
-        android:layout_marginTop="160dp"
-        android:layout_marginBottom="16dp"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/gas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/no_of_bedRooms"
+            android:text="Gas Connection?"
+            android:textSize="20dp"
+            android:layout_marginRight="220dp"
+            android:fontFamily="@font/nunito_bold"/>
+        <!--<RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/gas"
+                android:layout_toRightOf="@id/gas"
+                android:text="Yes"
+                android:textSize="20sp"
+                />
+            <RadioButton
+                android:id="@+id/radio_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/radio_yes"
+                android:layout_toRightOf="@id/radio_yes"
+                android:text="No"
+                android:textSize="20sp"/>
+
+        </RadioGroup>-->
+
+        <ImageView
+            android:id="@+id/image_to_upload1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/radio_no"
+            android:src="@drawable/ic_add_a_photo_black_24dp"
+            android:layout_marginLeft="100dp"/>
+        <ProgressBar
+            android:id="@+id/progress_bar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="16dp"/>
+            />
+        <ImageView
+            android:id="@+id/image_to_upload2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/ic_add_a_photo_black_24dp"
+            />
+        <ProgressBar
+            android:id="@+id/progress_bar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="16dp"/>
+        />
+        <ImageView
+            android:id="@+id/image_to_upload3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_toEndOf="@+id/image_to_upload1"
+            android:layout_toRightOf="@id/image_to_upload1"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/ic_add_a_photo_black_24dp"
+            />
+        <ProgressBar
+            android:id="@+id/progress_bar3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="16dp"/>
+        />
+        <ImageView
+            android:id="@+id/image_to_upload4"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/ic_add_a_photo_black_24dp"
+            />
+        <ProgressBar
+            android:id="@+id/progress_bar4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="16dp"/>
+        />
+
+        <Button
+            android:id="@+id/button_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="140dp"
+            android:layout_centerHorizontal="true"
+            android:text="Upload"
+            android:layout_marginBottom="15dp"/>
+        <!--<ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_above="@+id/button_upload"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="16dp"/>-->
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>
