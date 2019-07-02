@@ -249,6 +249,7 @@ public class Advertisement extends AppCompatActivity {
                                     while (!urlTask.isSuccessful());
                                     Uri downloadUrl = urlTask.getResult();
                                     mDownloadUrl4=downloadUrl.toString();
+                                    //Toast.makeText(Advertisement.this, "You sent " + mDownloadUrl4, Toast.LENGTH_LONG).show();
                                     Handler handler = new Handler();
                                     handler.postDelayed(new Runnable() {
                                         @Override
