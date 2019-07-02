@@ -59,6 +59,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.regex.Pattern;
 
 import static com.example.apartment_finder2.MainActivity.checker;
+import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
@@ -68,7 +69,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
     FirebaseUser mUser;
-
+    private GoogleSignInClient mGoogleSignInClient;
+    private static final int RC_SIGN_IN=1;
     String Email,Password;
     public static final String TAG = "Login";
     ProgressDialog mDialog;
@@ -103,12 +105,73 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             }
         };
 
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
 
 
         mLogin.setOnClickListener(this);
         mRegister.setOnClickListener(this);
         mGooglelogin.setOnClickListener(this);
         mforgotpassword.setOnClickListener(this);
+
+        mforgotpassword.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(Login.this, ForgetPassword.class);
+                startActivity(intent);
+            }
+        });
+    }
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e);
+                // ...
+            }
+        }
+    }
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            //updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            //Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
+                            //updateUI(null);
+                        }
+
+                        // ...
+                    }
+                });
     }
 
     @Override
@@ -138,6 +201,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         else if (v==mRegister){
             startActivity(new Intent(Login.this,Register.class));
         }
+        else if(v==mGooglelogin)
+        {
+            signIn();
+        }
     }
 
     private void userSign() {
@@ -164,10 +231,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 }else {
 
                     checker=1;
-
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
-
                     mDialog.dismiss();
                 }
             }
