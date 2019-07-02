@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity  {
     private Button mLogoutOption;
     private TextView mlogAndper;
     private Button make_advertise;
+    private Button make_new;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
