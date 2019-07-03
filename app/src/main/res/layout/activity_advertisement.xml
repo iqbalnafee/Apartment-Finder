@@ -69,13 +69,7 @@
 
         </RadioGroup>-->
 
-        <ImageView
-            android:id="@+id/image_to_upload1"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_below="@+id/radio_no"
-            android:src="@drawable/ic_add_a_photo_black_24dp"
-            android:layout_marginLeft="100dp"/>
+
         <ProgressBar
             android:id="@+id/progress_bar1"
             android:layout_width="match_parent"
@@ -85,14 +79,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="16dp"/>
             />
-        <ImageView
-            android:id="@+id/image_to_upload2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="0dp"
-            android:src="@drawable/ic_add_a_photo_black_24dp"
-            />
+
         <ProgressBar
             android:id="@+id/progress_bar2"
             android:layout_width="match_parent"
@@ -102,15 +89,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="16dp"/>
         />
-        <ImageView
-            android:id="@+id/image_to_upload3"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_toEndOf="@+id/image_to_upload1"
-            android:layout_toRightOf="@id/image_to_upload1"
-            android:layout_marginLeft="100dp"
-            android:src="@drawable/ic_add_a_photo_black_24dp"
-            />
+
         <ProgressBar
             android:id="@+id/progress_bar3"
             android:layout_width="match_parent"
@@ -120,13 +99,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="16dp"/>
         />
-        <ImageView
-            android:id="@+id/image_to_upload4"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="100dp"
-            android:src="@drawable/ic_add_a_photo_black_24dp"
-            />
+
         <ProgressBar
             android:id="@+id/progress_bar4"
             android:layout_width="match_parent"

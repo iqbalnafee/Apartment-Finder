@@ -64,10 +64,10 @@ public class Advertisement extends AppCompatActivity {
         mPrice = findViewById(R.id.flat_price);
         mBedrooms = findViewById(R.id.no_of_bedRooms);
         mLoc = findViewById(R.id.location);
-        mImageView1 = findViewById(R.id.image_to_upload1);
-        mImageView2 = findViewById(R.id.image_to_upload2);
-        mImageView3 = findViewById(R.id.image_to_upload3);
-        mImageView4 = findViewById(R.id.image_to_upload4);
+        //mImageView1 = findViewById(R.id.image_to_upload1);
+        //mImageView2 = findViewById(R.id.image_to_upload2);
+        //mImageView3 = findViewById(R.id.image_to_upload3);
+        //mImageView4 = findViewById(R.id.image_to_upload4);
         mProgressBar = findViewById(R.id.progress_bar);
         mProgressBar1 = findViewById(R.id.progress_bar1);
         mProgressBar2 = findViewById(R.id.progress_bar2);
