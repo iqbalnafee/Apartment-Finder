@@ -75,18 +75,27 @@ public class Profile extends Fragment {
                     String email=""+ds.child("email").getValue();
                     String phone=""+ds.child("phone").getValue();
                     String image=""+ds.child("image").getValue();
+                    String cover=""+ds.child("cover").getValue();
 
                     nameTv.setText(name);
                     emailTv.setText(email);
                     phoneTv.setText(phone);
 
-                    /*try{
+                    try{
                         Picasso.get().load(image).into(avatarIv);
                     }
                     catch(Exception e)
                     {
-                        Picasso.get().load(R.drawable.ic_add_image).into(avatarIv);
-                    }*/
+                        Picasso.get().load(R.drawable.ic_default_img_white).into(avatarIv);
+                    }
+
+                    try{
+                        Picasso.get().load(cover).into(coverIv);
+                    }
+                    catch(Exception e)
+                    {
+
+                    }
                 }
             }
 
