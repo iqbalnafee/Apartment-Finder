@@ -67,11 +67,20 @@ public class Upload {
     public String getmImageUrl3() {
         return mImageUrl3;
     }
-    public String getmImageUr4() {
+    public String getmImageUrl4() {
         return mImageUrl4;
     }
 
     public void setmImageUrl(String ImageUrl) {
         this.mImageUrl1 = ImageUrl;
+    }
+    public void setmImageUrl2(String ImageUrl) {
+        this.mImageUrl2 = ImageUrl;
+    }
+    public void setmImageUrl3(String ImageUrl) {
+        this.mImageUrl3 = ImageUrl;
+    }
+    public void setmImageUrl4(String ImageUrl) {
+        this.mImageUrl4 = ImageUrl;
     }
 }

@@ -80,12 +80,6 @@ public class MainActivity extends AppCompatActivity  {
 
                         break;
 
-                    case R.id.profile:
-
-                        Intent intent2 = new Intent(MainActivity.this, Profile.class);
-                        startActivity(intent2);
-
-                        break;
 
                 }
 

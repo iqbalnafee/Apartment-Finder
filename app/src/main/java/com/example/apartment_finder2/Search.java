@@ -3,10 +3,7 @@ package com.example.apartment_finder2;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Observable;
-import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,46 +11,32 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Search extends AppCompatActivity {
 
@@ -63,6 +46,7 @@ public class Search extends AppCompatActivity {
     private RecyclerView mResultList;
     private  ListView mlistView;
     private FirebaseDatabase mdataBase;
+    String simageURL;
 
     //private ListViewAdapter adapter;
 
@@ -136,7 +120,7 @@ public class Search extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-
+                mResultList.setVisibility(View.INVISIBLE);
                 ArrayList<String> tempList=new ArrayList<>();
 
                 for(String temp: list)
@@ -177,14 +161,18 @@ public class Search extends AppCompatActivity {
             }
         });
 
+
+
+
     }
 
 
 
     private void firebaseUserSearch(String searchText) {
         hideKeyboard(Search.this);
+        mResultList.setVisibility(View.VISIBLE);
         mResultList.setLayoutManager(new LinearLayoutManager(this));
-        Toast.makeText(Search.this, "Started Search", Toast.LENGTH_LONG).show();
+        //Toast.makeText(Search.this, "Started Search", Toast.LENGTH_LONG).show();
 
         Query firebaseSearchQuery = mUserDatabase.orderByChild("mLocation").startAt(searchText).endAt(searchText+ "\uf8ff");
 
@@ -200,6 +188,23 @@ public class Search extends AppCompatActivity {
             protected void populateViewHolder(UploadViewHolder viewHolder, Upload model, int position) {
                 viewHolder.setDetails(getApplicationContext(), model.getmPrice(), model.getmNumber_Of_Bedrooms(), model.getmImageUrl());
             }
+            @Override
+            public  UploadViewHolder onCreateViewHolder(ViewGroup parent,int viewType)
+            {
+                final UploadViewHolder uploadViewHolder=super.onCreateViewHolder(parent,viewType);
+                uploadViewHolder.setOnClickListener(new UploadViewHolder.ClickListener(){
+                    @Override
+                    public void onItemClick(View view, int position)
+                    {
+                        simageURL=uploadViewHolder.getImageURL();
+                        Intent intent=new Intent(view.getContext(),ExtendedSearchResult.class);
+                        //Toast.makeText(Search.this, "You sent " + simageURL, Toast.LENGTH_LONG).show();
+                        intent.putExtra("image",simageURL);
+                        startActivity(intent);
+                    }
+                });
+                return uploadViewHolder;
+            }
         };
 
         mResultList.setAdapter(firebaseRecyclerAdapter);
@@ -209,11 +214,18 @@ public class Search extends AppCompatActivity {
     public static class UploadViewHolder extends RecyclerView.ViewHolder {
 
         View mView;
-
+        String sURL;
         public UploadViewHolder(View itemView) {
             super(itemView);
-
             mView = itemView;
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view)
+                {
+                    mClickListener.onItemClick(view,getAdapterPosition());
+                }
+            });
 
         }
 
@@ -222,10 +234,27 @@ public class Search extends AppCompatActivity {
             TextView upload_price = (TextView) mView.findViewById(R.id.PricesOfFlat);
             TextView upload_no_bed = (TextView) mView.findViewById(R.id.bedrooms);
             ImageView upload_image = (ImageView) mView.findViewById(R.id.resulted_image);
+            sURL=userImage;
 
             upload_price.setText(Price);
             upload_no_bed.setText(Number_Bedrooms);
             Glide.with(ctx).load(userImage).into(upload_image);
+
+        }
+
+        private UploadViewHolder.ClickListener mClickListener;
+
+        public interface ClickListener
+        {
+            void onItemClick(View view, int position);
+        }
+        public void setOnClickListener(UploadViewHolder.ClickListener clickListener)
+        {
+            mClickListener=clickListener;
+        }
+        public String getImageURL()
+        {
+            return sURL;
         }
 
     }
@@ -238,28 +267,12 @@ public class Search extends AppCompatActivity {
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
-    private void arrayAdapterListView()
-    {
-        setTitle("dev2qa.com - ArrayAdapter List View Example");
-
-        List<String> dataList = new ArrayList<String>();
-        dataList.add("Java");
-        dataList.add("Android");
-        dataList.add("JavaEE");
-        dataList.add("JSP");
-        dataList.add("JDBC");
-
-        ListView listView = (ListView)findViewById(R.id.listView);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataList);
-        listView.setAdapter(arrayAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
-                Object clickItemObj = adapterView.getAdapter().getItem(index);
-                Toast.makeText(Search.this, "You clicked " + clickItemObj.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
+    public void Activity4() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
+
+
+
 
 }
