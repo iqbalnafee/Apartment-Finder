@@ -2,13 +2,11 @@ package com.example.apartment_finder2;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.Date;
 
@@ -30,10 +31,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     Button mRegisterbtn;
     TextView mLoginPageBack;
     FirebaseAuth mAuth;
+    FirebaseDatabase ref;
     DatabaseReference mdatabase;
     String Name,Email,Password;
     ProgressDialog mDialog;
-
+    String mToken;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +45,23 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         password = (EditText)findViewById(R.id.register_password);
         mRegisterbtn = (Button)findViewById(R.id.register_btn);
         mLoginPageBack = (TextView)findViewById(R.id.loginBackbtn);
+        // for auth
         mAuth = FirebaseAuth.getInstance();
         mRegisterbtn.setOnClickListener(this);
         mLoginPageBack.setOnClickListener(this);
         mDialog = new ProgressDialog(this);
+        //ref=FirebaseDatabase.getInstance();
         mdatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( Register.this,  new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                mToken = instanceIdResult.getToken();
+                Log.e("Token",mToken);
+            }
+        });
+
+
     }
 
     @Override
@@ -58,6 +72,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             startActivity(new Intent(Register.this,Login.class));
         }
     }
+
     private void UserRegister() {
         Name = name.getText().toString().trim();
         Email = email.getText().toString().trim();
@@ -83,21 +98,18 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-
                     sendEmailVerification();
                     mDialog.dismiss();
                     OnAuth(task.getResult().getUser());
                     //mAuth.signOut();
                 }else{
                     Toast.makeText(Register.this,"error on creating user",Toast.LENGTH_SHORT).show();
-                    mDialog.dismiss();
                 }
             }
         });
     }
 
     private void sendEmailVerification() {
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user!=null){
             user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -111,17 +123,27 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             });
         }
     }
-    private void OnAuth(FirebaseUser user) {
 
+    private void OnAuth(FirebaseUser user) {
         createAnewUser(user.getUid());
     }
+
     private void createAnewUser(String uid) {
         User user = BuildNewuser();
         mdatabase.child(uid).setValue(user);
     }
+
+
     private User BuildNewuser(){
-        return new User(getDisplayName(),getUserEmail(),new Date().getTime());
+
+        return new User(
+                getDisplayName(),
+                getUserEmail(),
+                new Date().getTime(),
+                mToken
+        );
     }
+
     public String getDisplayName() {
         return Name;
     }
