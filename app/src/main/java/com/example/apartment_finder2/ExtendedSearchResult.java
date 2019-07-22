@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -37,7 +38,7 @@ public class ExtendedSearchResult extends AppCompatActivity {
     private DatabaseReference mUserDatabase;
     private FirebaseDatabase mdataBase;
     private RecyclerView mResultList;
-
+    public int CountImg=0;
     //ImageView imageView1,imageView2,imageView3,imageView4;
     String str1,str2,str3,str4;
     Upload up;
@@ -47,38 +48,35 @@ public class ExtendedSearchResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extended_search_result);
 
-        /*imageView1=findViewById(R.id.image4_1);
-        imageView2=findViewById(R.id.image4_2);
-        imageView3=findViewById(R.id.image4_3);
-        imageView4=findViewById(R.id.image4_4);*/
-
-
         up=new Upload();
 
         mUserDatabase = FirebaseDatabase.getInstance().getReference("uploads");
         final String EimageURL=getIntent().getStringExtra("image");
-        mResultList=findViewById(R.id.result_list);
 
-        mResultList = (RecyclerView) findViewById(R.id.result_list);
+        mResultList = findViewById(R.id.result_list);
         mResultList.setHasFixedSize(true);
         mResultList.setLayoutManager(new LinearLayoutManager(this));
-
+        Log.wtf("Creation", "URL: "+EimageURL);
         mUserDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds:dataSnapshot.getChildren())
                 {
-                    up=ds.getValue(Upload.class);
-                    if(up.getmImageUrl().contentEquals(EimageURL))
-                    {
-                        str1=up.getmImageUrl();
-                        str2=up.getmImageUrl2();
-                        str3=up.getmImageUrl3();
-                        str4=up.getmImageUrl4();
-                        //Toast.makeText(ExtendedSearchResult.this, "You sent " + str4, Toast.LENGTH_LONG).show();
-                        break;
-                    }
+                    //if(CountImg==0) {
+                        up = ds.getValue(Upload.class);
+                        if (up.getmImageUrl().contentEquals(EimageURL)) {
+                            str1 = up.getmImageUrl();
+                            str2 = up.getmImageUrl2();
+                            str3 = up.getmImageUrl3();
+                            str4 = up.getmImageUrl4();
+
+                            break;
+                        }
                 }
+
+
+                //}
+               // ++CountImg;
             }
 
             @Override
@@ -99,10 +97,10 @@ public class ExtendedSearchResult extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(ExtendedSearchResult.UploadViewHolder viewHolder, Upload model, int position) {
-                viewHolder.setDetails(getApplicationContext(), str1,str2,str3,str4);
+                    //Toast.makeText(ExtendedSearchResult.this, "You sent " , Toast.LENGTH_LONG).show();
+                    viewHolder.setDetails(getApplicationContext(), str1,str2,str3,str4);
+
             }
-
-
         };
 
         mResultList.setAdapter(firebaseRecyclerAdapter);
@@ -118,27 +116,16 @@ public class ExtendedSearchResult extends AppCompatActivity {
         }
 
         public void setDetails(Context ctx, String str1, String str2, String str3,String str4){
-
             ImageView imageView1=mView.findViewById(R.id.image4_1);
             ImageView imageView2=mView.findViewById(R.id.image4_2);
             ImageView imageView3=mView.findViewById(R.id.image4_3);
             ImageView imageView4=mView.findViewById(R.id.image4_4);
 
-            /*Glide.with(ctx).load(str1).into(imageView1);
-            Glide.with(ctx).load(str2).into(imageView2);
-            Glide.with(ctx).load(str3).into(imageView3);
-            Glide.with(ctx).load(str4).into(imageView4);*/
-
             Picasso.with(ctx).load(str1).resize(200,200).into(imageView1);
             Picasso.with(ctx).load(str2).resize(200,200).into(imageView2);
             Picasso.with(ctx).load(str3).resize(200,200).into(imageView3);
             Picasso.with(ctx).load(str4).resize(200,200).into(imageView4);
-
-
-
         }
-
-
 
     }
 

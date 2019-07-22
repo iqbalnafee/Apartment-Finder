@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -53,11 +54,20 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
+import static com.example.apartment_finder2.MainActivity.LoggedEmail;
 import static com.example.apartment_finder2.MainActivity.checker;
 import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
 
@@ -71,11 +81,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     FirebaseUser mUser;
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN=1;
-    String Email,Password;
+    String Email,Password,AdminName;
     public static final String TAG = "Login";
     ProgressDialog mDialog;
+    private DatabaseReference ref;
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-
+    User up;
+    List<String> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,21 +101,24 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         mRegister = (Button)findViewById(R.id.sign_up);
         mGooglelogin = (Button)findViewById(R.id.google_button);
         mDialog = new ProgressDialog(this);
+        ref=FirebaseDatabase.getInstance().getReference("Admins");
+        up=new User();
+        list = new ArrayList<String>();
 
         mAuth = FirebaseAuth.getInstance();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        /*mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (mUser!=null){
-                    /*Intent intent = new Intent(Login.this,MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);*/
+                    //Intent intent = new Intent(Login.this,MainActivity.class);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    //startActivity(intent);
                 }else {
                     Log.d(TAG,"AuthStateChange:LogOut");
                 }
             }
-        };
+        };*/
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -124,6 +139,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             {
                 Intent intent = new Intent(Login.this, ForgetPassword.class);
                 startActivity(intent);
+            }
+        });
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds:dataSnapshot.getChildren())
+                {
+                    up=ds.getValue(User.class);
+                    list.add(up.getEmail());
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
@@ -174,7 +206,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 });
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
@@ -186,7 +218,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         if (mAuthListener!=null){
             mAuth.removeAuthStateListener(mAuthListener);
         }
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -224,17 +256,40 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         mAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                int flag=0;
                 if (!task.isSuccessful()){
                     mDialog.dismiss();
-                    Toast.makeText(Login.this,"Login not successful",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this,"Login not successful "+  task.getException().getMessage(),Toast.LENGTH_LONG).show();
 
                 }else {
-
                     checker=1;
-                    Intent intent = new Intent(Login.this, MainActivity.class);
-                    startActivity(intent);
-                    mDialog.dismiss();
+
+                    Iterator<String> iter = list.iterator();
+
+                    for(String temp: list)
+                    {
+                        if(temp.contains(Email))
+                        {
+                            flag=1;
+                            AdminName=iter.next();
+                            //AdminName=iter.next();
+                            Intent intent = new Intent(Login.this, AdminUi.class);
+                            intent.putExtra("Name",AdminName);
+                            startActivity(intent);
+                            break;
+                        }
+                    }
+
+                    if(flag==0)
+                    {
+                        Intent intent = new Intent(Login.this, MainActivity.class);
+                        intent.putExtra("Email",Email);
+                        LoggedEmail=Email;
+                        startActivity(intent);
+                        mDialog.dismiss();
+                    }
                 }
+                //flag=0;
             }
         });
     }

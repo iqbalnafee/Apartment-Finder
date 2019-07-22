@@ -103,13 +103,13 @@ public class Search extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
                 String text=mlistView.getItemAtPosition(index).toString();
                 //Object clickItemObj = adapterView.getAdapter().getItem(index);
-                Toast.makeText(Search.this, "You clicked " + text, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Search.this, "You clicked " + text, Toast.LENGTH_SHORT).show();
                 mSearchField.setText(text);
                 mlistView.setVisibility(View.INVISIBLE);
                 firebaseUserSearch(text);
             }
         });
-       mSearchField.addTextChangedListener(new TextWatcher() {
+        mSearchField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -121,6 +121,8 @@ public class Search extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 mResultList.setVisibility(View.INVISIBLE);
+                mlistView.setVisibility(View.VISIBLE);
+                //hideKeyboard(Search.this);
                 ArrayList<String> tempList=new ArrayList<>();
 
                 for(String temp: list)
@@ -138,14 +140,13 @@ public class Search extends AppCompatActivity {
                 if (TextUtils.isEmpty(searchText))
                 {
                     mlistView.setVisibility(View.INVISIBLE);
+                    //mResultList.setVisibility(View.INVISIBLE);
                 }
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
-
 
             }
         });
@@ -155,6 +156,7 @@ public class Search extends AppCompatActivity {
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mlistView.setVisibility(View.INVISIBLE);
                 hideKeyboard(Search.this);
                 String searchText = mSearchField.getText().toString();
                 firebaseUserSearch(searchText);
@@ -186,7 +188,7 @@ public class Search extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(UploadViewHolder viewHolder, Upload model, int position) {
-                viewHolder.setDetails(getApplicationContext(), model.getmPrice(), model.getmNumber_Of_Bedrooms(), model.getmImageUrl());
+                viewHolder.setDetails(getApplicationContext(), model.getmPrice(), model.getmNumber_Of_Bedrooms(), model.getmImageUrl(),model.getmRentOrSell());
             }
             @Override
             public  UploadViewHolder onCreateViewHolder(ViewGroup parent,int viewType)
@@ -197,7 +199,7 @@ public class Search extends AppCompatActivity {
                     public void onItemClick(View view, int position)
                     {
                         simageURL=uploadViewHolder.getImageURL();
-                        Intent intent=new Intent(view.getContext(),ExtendedSearchResult.class);
+                        Intent intent=new Intent(view.getContext(),ExtendSearch.class);
                         //Toast.makeText(Search.this, "You sent " + simageURL, Toast.LENGTH_LONG).show();
                         intent.putExtra("image",simageURL);
                         startActivity(intent);
@@ -229,15 +231,17 @@ public class Search extends AppCompatActivity {
 
         }
 
-        public void setDetails(Context ctx, String Price, String Number_Bedrooms, String userImage){
+        public void setDetails(Context ctx, String Price, String Number_Bedrooms, String userImage,String Sell){
 
             TextView upload_price = (TextView) mView.findViewById(R.id.PricesOfFlat);
             TextView upload_no_bed = (TextView) mView.findViewById(R.id.bedrooms);
+            TextView upload_sellorent = (TextView) mView.findViewById(R.id.SellORent);
             ImageView upload_image = (ImageView) mView.findViewById(R.id.resulted_image);
             sURL=userImage;
 
             upload_price.setText(Price);
             upload_no_bed.setText(Number_Bedrooms);
+            upload_sellorent.setText("For "+Sell);
             Glide.with(ctx).load(userImage).into(upload_image);
 
         }

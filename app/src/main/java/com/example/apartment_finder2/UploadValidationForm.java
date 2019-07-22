@@ -7,26 +7,33 @@ public class UploadValidationForm {
     private String mSex;
     private String mOcc;
     private String mNid;
-    private String mPchoice;
+    private String mPhone;
     private String mES;
     private String mValidation;
     private String mKey;
+    private String mSeeMblNum;
+    private String mImageUrl1;
+    private String mImageUrl2;
 
     public UploadValidationForm() {
         //empty constructor needed
     }
 
-    public UploadValidationForm(String Fname,String Lname,String Age,String Sex,String Occ,String Nid,String choice,String ES,String Validation,String key) {
+    public UploadValidationForm(String Fname,String Lname,String Age,String Sex,String Occ,String Nid,String choice,String SeeMblNum,String imageUrl1,String imageUrl2,String ES,String Validation,String key) {
         mFname=Fname;
         mLname=Lname;
         mAge=Age;
         mSex=Sex;
         mOcc=Occ;
         mNid=Nid;
-        mPchoice=choice;
+        mPhone=choice;
+        mSeeMblNum=SeeMblNum;
+        mImageUrl1=imageUrl1;
+        mImageUrl2=imageUrl2;
         mES=ES;
         mValidation=Validation;
         mKey=key;
+
     }
 
     public String getmFname() {
@@ -85,12 +92,12 @@ public class UploadValidationForm {
         this.mNid = mNid;
     }
 
-    public String getmPchoice() {
-        return mPchoice;
+    public String getmPhone() {
+        return mPhone;
     }
 
-    public void setmPchoice(String mPchoice) {
-        this.mPchoice = mPchoice;
+    public void setmPhone(String mPchoice) {
+        this.mPhone = mPchoice;
     }
 
     public String getmES() {
@@ -107,5 +114,29 @@ public class UploadValidationForm {
 
     public void setmKey(String mKey) {
         this.mKey = mKey;
+    }
+
+    public String getmSeeMblNum() {
+        return mSeeMblNum;
+    }
+
+    public void setmSeeMblNum(String mSeeMblNum) {
+        this.mSeeMblNum = mSeeMblNum;
+    }
+
+    public String getmImageUrl1() {
+        return mImageUrl1;
+    }
+
+    public void setmImageUrl1(String mImageUrl1) {
+        this.mImageUrl1 = mImageUrl1;
+    }
+
+    public String getmImageUrl2() {
+        return mImageUrl2;
+    }
+
+    public void setmImageUrl2(String mImageUrl2) {
+        this.mImageUrl2 = mImageUrl2;
     }
 }

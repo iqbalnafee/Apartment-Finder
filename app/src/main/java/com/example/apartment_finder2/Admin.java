@@ -63,10 +63,7 @@ public class Admin extends AppCompatActivity {
                     list.add(up.getmES());
                     ++c;
                 }
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -80,7 +77,7 @@ public class Admin extends AppCompatActivity {
     private void firebaseUserSearch(String searchText) {
         //hideKeyboard(Search.this);
         mResultList.setVisibility(View.VISIBLE);
-
+        mResultList.setLayoutManager(new LinearLayoutManager(this));
 
         Query firebaseSearchQuery = mUserDatabase.orderByChild("mES").startAt(searchText).endAt(searchText+ "\uf8ff");
 
@@ -90,7 +87,6 @@ public class Admin extends AppCompatActivity {
                 R.layout.admin_recyler_layout,
                 UploadViewHolder.class,
                 firebaseSearchQuery
-
         ) {
             @Override
             protected void populateViewHolder(UploadViewHolder viewHolder, UploadValidationForm model, int position) {
@@ -141,8 +137,6 @@ public class Admin extends AppCompatActivity {
 
             TextView upload_Email = (TextView) mView.findViewById(R.id.ARemail);
             TextView upload_DefaultText = (TextView) mView.findViewById(R.id.ARdefultText);
-
-
 
             upload_Email.setText(Email);
             upload_DefaultText.setText(DefaultText);

@@ -100,6 +100,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                 if (task.isSuccessful()){
                     sendEmailVerification();
                     mDialog.dismiss();
+                    //LoggedName=
                     OnAuth(task.getResult().getUser());
                     //mAuth.signOut();
                 }else{
