@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/drawable_green_gradient"
+    tools:context=".Admin">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="Admin Module"
+        android:textColor="@color/white"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="0dp"
+        android:textSize="45dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Admin_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin"
+        android:textColor="@color/black"
+
+        android:gravity="center"
+        android:layout_marginTop="60dp"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/ValidCbutton"
+        android:layout_below="@id/Admin_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Validity Check"
+        android:textColor="@color/colorAmber_A400"
+        android:textSize="20dp"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/drawable_green_gradient"
+        android:onClick="ValidButtonClick"/>
+    <Button
+        android:id="@+id/LogOut"
+        android:layout_below="@id/Admin_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Log Out"
+        android:textColor="@color/colorAmber_A400"
+        android:textSize="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_toRightOf="@+id/ValidCbutton"
+        android:background="@drawable/drawable_green_gradient"
+        android:onClick="LogOutButtonClick"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/result_list1"
+        android:layout_width="391dp"
+        android:layout_height="530dp"
+        android:layout_below="@+id/ValidCbutton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="46dp"></android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

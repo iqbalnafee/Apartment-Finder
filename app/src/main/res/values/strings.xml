@@ -1,8 +1,13 @@
 <resources>
-    <string name="app_name">Apartment_Finder2</string>
+    <string name="app_name">Apartment Finder</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_register">Register</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_extend_search">ExtendSearch</string>
+    <string name="title_activity_profile_of_user">ProfileOfUser</string>
+    <string name="title_activity_forget_password">ForgetPassword</string>
+    <string name="title_activity_ad_log_in">AdLogIn</string>
+    <string name="title_activity_waiting">Waiting</string>
 </resources>

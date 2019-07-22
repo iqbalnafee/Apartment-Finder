@@ -60,13 +60,13 @@
         android:layout_height="wrap_content"
         android:text="Log Out"
         android:textSize="30dp"
-        android:layout_marginTop="490dp"
+        android:layout_marginTop="450dp"
         android:layout_marginLeft="28dp"/>
     <Button
         android:id="@+id/make_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="380dp"
         style="@style/com_facebook_button_like"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"

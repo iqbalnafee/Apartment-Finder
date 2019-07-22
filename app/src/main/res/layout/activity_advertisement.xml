@@ -13,13 +13,45 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rent or Sell?"
+            android:textSize="20dp"
+            android:layout_marginRight="220dp"
+            android:fontFamily="@font/nunito_bold"/>
 
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/groupOfRentSell">
+
+            <RadioButton
+                android:id="@+id/Rent_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rent"
+                android:textSize="20sp"
+                android:onClick="RentClicked"
+                />
+            <RadioButton
+                android:id="@+id/Sell_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/radio_yes"
+                android:layout_toRightOf="@id/radio_yes"
+                android:text="Sell"
+                android:textSize="20sp"
+                android:onClick="SellClicked"/>
+
+        </RadioGroup>
 
     <EditText
         android:id="@+id/flat_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:inputType="number"
         android:hint="Price in Tk" />
     <EditText
         android:id="@+id/no_of_bedRooms"
@@ -27,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/flat_price"
         android:textAlignment="center"
+        android:inputType="number"
         android:hint="Number Of Bedrooms" />
     <EditText
         android:id="@+id/location"
@@ -45,9 +78,10 @@
             android:textSize="20dp"
             android:layout_marginRight="220dp"
             android:fontFamily="@font/nunito_bold"/>
-        <!--<RadioGroup
+        <RadioGroup
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/groupOfGas">
 
             <RadioButton
                 android:id="@+id/radio_yes"
@@ -57,6 +91,7 @@
                 android:layout_toRightOf="@id/gas"
                 android:text="Yes"
                 android:textSize="20sp"
+                android:onClick="GasClickedYes"
                 />
             <RadioButton
                 android:id="@+id/radio_no"
@@ -65,11 +100,171 @@
                 android:layout_toEndOf="@id/radio_yes"
                 android:layout_toRightOf="@id/radio_yes"
                 android:text="No"
+                android:onClick="GasClickedNo"
                 android:textSize="20sp"/>
 
-        </RadioGroup>-->
+        </RadioGroup>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lift?"
+            android:textSize="20dp"
+            android:layout_marginRight="220dp"
+            android:fontFamily="@font/nunito_bold"/>
 
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/groupOfLift">
+
+            <RadioButton
+                android:id="@+id/lift_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textSize="20sp"
+                android:onClick="LiftClickedYes"
+                />
+            <RadioButton
+                android:id="@+id/lift_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/radio_yes"
+                android:layout_toRightOf="@id/radio_yes"
+                android:text="No"
+                android:textSize="20sp"
+                android:onClick="LiftClickedNo"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Security Facility?"
+            android:textSize="20dp"
+            android:layout_marginRight="220dp"
+            android:fontFamily="@font/nunito_bold"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/groupOfAmenities">
+
+            <RadioButton
+                android:id="@+id/Ground_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textSize="20sp"
+                android:onClick="AmenitiesClickedYes"
+                />
+            <RadioButton
+                android:id="@+id/Ground_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/radio_yes"
+                android:layout_toRightOf="@id/radio_yes"
+                android:text="No"
+                android:textSize="20sp"
+                android:onClick="AmenitiesClickedNo"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nearby School?"
+            android:textSize="20dp"
+            android:layout_marginRight="220dp"
+            android:fontFamily="@font/nunito_bold"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/groupOfSchool">
+
+            <RadioButton
+                android:id="@+id/School_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textSize="20sp"
+                android:onClick="SchoolClickedYes"
+                />
+            <RadioButton
+                android:id="@+id/School_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/radio_yes"
+                android:layout_toRightOf="@id/radio_yes"
+                android:text="No"
+                android:textSize="20sp"
+                android:onClick="SchoolClickedNo"/>
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/SchoolName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/no_of_bedRooms"
+            android:textAlignment="center"
+            android:hint="School Name" />
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Nearby Hospital?"
+            android:textSize="20dp"
+            android:layout_marginRight="220dp"
+            android:fontFamily="@font/nunito_bold"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/groupOfHospital">
+
+            <RadioButton
+                android:id="@+id/Hospital_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textSize="20sp"
+                android:onClick="HospitalClickedYes"
+                />
+            <RadioButton
+                android:id="@+id/Hospital_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/radio_yes"
+                android:layout_toRightOf="@id/radio_yes"
+                android:text="No"
+                android:textSize="20sp"
+                android:onClick="HospitalClickedNo"/>
+
+        </RadioGroup>
+        <EditText
+            android:id="@+id/HospitalName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/no_of_bedRooms"
+            android:textAlignment="center"
+            android:hint="Hospital Name" />
+        <EditText
+            android:id="@+id/BusStandName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/no_of_bedRooms"
+            android:textAlignment="center"
+            android:hint="Nearby Bus Stand" />
+
+        <ImageView
+            android:id="@+id/image_to_upload1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/radio_no"
+            android:layout_marginLeft="100dp"
+            app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
         <ProgressBar
             android:id="@+id/progress_bar1"
             android:layout_width="match_parent"
@@ -79,7 +274,14 @@
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="16dp"/>
             />
-
+        <ImageView
+            android:id="@+id/image_to_upload2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="0dp"
+            app:srcCompat="@drawable/ic_add_a_photo_black_24dp"
+            />
         <ProgressBar
             android:id="@+id/progress_bar2"
             android:layout_width="match_parent"
@@ -89,7 +291,15 @@
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="16dp"/>
         />
-
+        <ImageView
+            android:id="@+id/image_to_upload3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_toEndOf="@+id/image_to_upload1"
+            android:layout_toRightOf="@id/image_to_upload1"
+            android:layout_marginLeft="100dp"
+            app:srcCompat="@drawable/ic_add_a_photo_black_24dp"
+            />
         <ProgressBar
             android:id="@+id/progress_bar3"
             android:layout_width="match_parent"
@@ -99,7 +309,13 @@
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="16dp"/>
         />
-
+        <ImageView
+            android:id="@+id/image_to_upload4"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="100dp"
+            app:srcCompat="@drawable/ic_add_a_photo_black_24dp"
+            />
         <ProgressBar
             android:id="@+id/progress_bar4"
             android:layout_width="match_parent"

@@ -48,16 +48,17 @@
             android:padding="10dp"
             android:textSize="20sp"
             android:id="@+id/login_password"/>
+
         <Button
             android:id="@+id/sign_in"
+            style="@style/com_facebook_button_like"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="43dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="43dp"
             android:layout_marginRight="20dp"
             android:text="Log in"
-            style="@style/com_facebook_button_like"
-            android:textSize="30dp"/>
+            android:textSize="30dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
