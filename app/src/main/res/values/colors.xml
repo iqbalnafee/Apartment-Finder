@@ -18,7 +18,7 @@
     <color name="Yellow">#EEF507</color>
     <color name="colorPurple_A400">#D500F9</color>
     <color name="colorPurple_900">#4A148C</color>
-    <color name="colorAmber_A400">#FFC400</color>
+    <color name="colorAmber_A400">#FCEFC4</color>
     <color name="colorAmber_900">#FF6F00</color>
     <color name="colorGreen_A400">#00E676</color>
     <color name="colorGreen_900">#1B5E20</color>
@@ -35,5 +35,6 @@
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>
     <color name="graylightAdminUi">#fafafa</color>
+    <color name="LightGreen">#D8F3CF</color>
 
 </resources>

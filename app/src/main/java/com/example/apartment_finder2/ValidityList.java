@@ -20,7 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ValidityList extends AppCompatActivity {
+public class  ValidityList extends AppCompatActivity {
     private ListView mValidityList;
     DatabaseReference ref;
     UploadValidationForm up;

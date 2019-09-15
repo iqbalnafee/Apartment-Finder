@@ -206,19 +206,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 });
     }
 
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (mAuthListener!=null){
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }*/
 
     @Override
     public void onBackPressed() {
@@ -242,11 +230,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private void userSign() {
         Email = mEmail.getText().toString().trim();
         Password = mPassword.getText().toString().trim();
-        if (TextUtils.isEmpty(Email)){
-            Toast.makeText(Login.this,"Enter Email",Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(Email)) {
+            mEmail.setError("Enter Email");
+            mEmail.requestFocus();
             return;
-        }else if (TextUtils.isEmpty(Password)){
-            Toast.makeText(Login.this,"Enter password",Toast.LENGTH_SHORT).show();
+        }
+        if (TextUtils.isEmpty(Password)) {
+            mPassword.setError("Enter Password");
+            mPassword.requestFocus();
             return;
         }
         mDialog.setMessage("Login please wait...");

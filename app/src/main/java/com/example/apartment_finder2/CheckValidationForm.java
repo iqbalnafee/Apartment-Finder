@@ -166,6 +166,7 @@ public class CheckValidationForm extends AppCompatActivity {
         });
 
         Intent intent=new Intent(this,SendValidityEmail.class);
+        intent.putExtra("RecipientMail",sss);
         startActivity(intent);
     }
     public void ClickInValidate(View v)
@@ -173,14 +174,18 @@ public class CheckValidationForm extends AppCompatActivity {
         mUserDatabase.child(mkey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                dataSnapshot.getRef().removeValue();
-                Toast.makeText(CheckValidationForm.this,"Deleted from Database",Toast.LENGTH_LONG).show();
+                //dataSnapshot.getRef().removeValue();
+                dataSnapshot.getRef().child("mValidation").setValue("Invalidated");
+                Toast.makeText(CheckValidationForm.this,"Invalidated the  form",Toast.LENGTH_LONG).show();
+                //Intent intent=new Intent(CheckValidationForm.this,ValidationForm.class);
+                //startActivity(intent);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
         Intent intent=new Intent(this,SendValidityEmail.class);
+        intent.putExtra("RecipientMail",sss);
         startActivity(intent);
     }
 

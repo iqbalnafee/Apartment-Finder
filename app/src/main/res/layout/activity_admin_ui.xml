@@ -166,14 +166,15 @@
                 android:layout_height="36dp"
                 app:srcCompat="@drawable/ic_home_black_24dp"
                 android:onClick="HomeClick"/>
+
             <TextView
+                android:id="@+id/Home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:onClick="HomeClick"
                 android:paddingLeft="20dp"
                 android:text="Home"
-                android:id="@+id/Home"
-                android:onClick="HomeClick"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -208,15 +209,19 @@
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                app:srcCompat="@drawable/ic_forum_black_24dp" />
+                app:srcCompat="@drawable/ic_forum_black_24dp"
+                android:onClick="FClick"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:text="Chat with Admins"
-                android:textStyle="bold" />
+                android:text="Chat With Admins"
+                android:textStyle="bold"
+                android:onClick="FClick"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -250,7 +255,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:text="Not Validated Forms"
+                android:text="Validation Forms"
                 android:id="@+id/NotValYet"
                 android:onClick="ClikedOnVal"
                 android:textStyle="bold" />

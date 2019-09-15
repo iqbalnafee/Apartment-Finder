@@ -9,29 +9,33 @@
     <ImageView
         android:id="@+id/city"
         android:layout_width="wrap_content"
-        android:layout_height="230dp"
+        android:layout_height="220dp"
         android:layout_alignParentTop="true"
         android:layout_gravity="top"
         app:srcCompat="@drawable/city_cartoon" />
+
+
 
     <EditText
         android:id="@+id/register_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/city"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Name"
+        android:hint="User Name"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:padding="10dp"/>
+
+
     <EditText
         android:id="@+id/register_email"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_below="@+id/register_name"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Email"
         android:padding="10dp"
@@ -45,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_below="@+id/register_email"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:padding="10dp"
         android:hint="@string/password_hint"
@@ -54,20 +58,47 @@
         android:layout_alignStart="@+id/register_email"
         android:layout_alignRight="@+id/register_email"
         android:layout_alignEnd="@+id/register_email" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_password"
+        android:id="@+id/mobile"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/register_email"
+        android:layout_alignStart="@+id/register_email"
+        android:layout_alignRight="@+id/register_email"
+        android:layout_alignEnd="@+id/register_email"
+        android:hint="Mobile No."/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mobile"
+        android:id="@+id/address"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/register_email"
+        android:layout_alignStart="@+id/register_email"
+        android:layout_alignRight="@+id/register_email"
+        android:layout_alignEnd="@+id/register_email"
+        android:hint="Addess"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
-        android:layout_below="@+id/register_password"
-        android:layout_alignLeft="@+id/register_password"
-        android:layout_alignStart="@+id/register_password"
-        android:layout_alignRight="@+id/register_password"
-        android:layout_alignEnd="@+id/register_password"
+        android:layout_below="@+id/address"
         android:text="Register"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         style="@style/com_facebook_button_like"
-        android:id="@+id/register_btn" />
+        android:id="@+id/register_btn"
+        android:layout_alignLeft="@+id/register_email"
+        android:layout_alignStart="@+id/register_email"
+        android:layout_alignRight="@+id/register_email"
+        android:layout_alignEnd="@+id/register_email"/>
     <TextView
         android:id="@+id/loginBackbtn"
         android:layout_width="wrap_content"
@@ -80,6 +111,7 @@
         android:textColor="@color/authui_colorAccent"
 
         />
+
 
 
 </RelativeLayout>

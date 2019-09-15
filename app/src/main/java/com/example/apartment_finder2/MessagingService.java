@@ -14,13 +14,13 @@ public class MessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage)
     {
-        showNotification(remoteMessage.getNotification().getBody());
+        showNotification(remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle());
     }
-    public void showNotification(String message) {
+    public void showNotification(String message,String title) {
         PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
         Notification notification = new Notification.Builder(this)
-                .setSmallIcon(R.drawable.ic_stat_ic_notification)
-                .setContentTitle("Apartment Finder")
+                .setSmallIcon(R.drawable.appdefaultico)
+                .setContentTitle(title)
                 .setContentText(message)
                 .setContentIntent(pi)
                 .setAutoCancel(true)

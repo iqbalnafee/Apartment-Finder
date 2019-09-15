@@ -17,12 +17,13 @@ public class Upload {
     private String mLift;
     private String mSecurity;
     private String mRentOrSell;
+    private String mEs;
     public Upload() {
         //empty constructor needed
     }
 
     public Upload(String loggedemail ,String price,String no_bedrooms,String Loc,String imageUrl1,String imageUrl2,String imageUrl3,String imageUrl4,
-                  String school,String hospital,String bus,String gas,String lift,String security,String rentOsell) {
+                  String school,String hospital,String bus,String gas,String lift,String security,String rentOsell,String LEmail) {
 
         mLoggedEmail=loggedemail;
         mPrice=price;
@@ -39,7 +40,7 @@ public class Upload {
         mLift=lift;
         mSecurity=security;
         mRentOrSell=rentOsell;
-
+        mEs=LEmail;
 
 
     }
@@ -165,5 +166,13 @@ public class Upload {
 
     public void setmRentOrSell(String mRentOrSell) {
         this.mRentOrSell = mRentOrSell;
+    }
+
+    public String getmEs() {
+        return mEs;
+    }
+
+    public void setmEs(String mEs) {
+        this.mEs = mEs;
     }
 }

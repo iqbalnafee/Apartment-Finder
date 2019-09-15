@@ -4,20 +4,75 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/appdefaulticon_round"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Search" />
-        <activity android:name=".Advertisement" />
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".FavoritesList"></activity>
+        <activity android:name=".Extendfavorites" />
+        <activity android:name=".loanCalculation" />
+        <activity android:name=".NewFrontGui" />
+        <activity android:name=".SeeForm" />
+        <activity android:name=".icchamoto" />
+        <activity android:name=".CustomizeSearch" />
+        <activity android:name=".FeedbackForm" />
+        <activity android:name=".NewSubmission" />
+        <activity android:name=".Map" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity android:name=".VieePagerGlide" />
+        <activity android:name=".ValidityList" />
+        <activity android:name=".AdminUi" />
+        <activity android:name=".UserUi" />
+        <activity android:name=".Chattting" />
+        <activity android:name=".NotValidYet" />
+        <activity android:name=".SendValidityEmail" />
+        <activity android:name=".CheckValidationForm" />
+        <activity android:name=".waiting" />
+        <activity android:name=".Admin" />
+        <activity android:name=".ValidationForm" />
         <activity
-            android:name=".Register"
-            android:label="@string/title_activity_register"
+            android:name=".AdLogIn"
+            android:label="@string/title_activity_ad_log_in"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Register" />
+        <activity
+            android:name=".ForgetPassword"
+            android:label="@string/title_activity_forget_password"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProfileOfUser"
+            android:label="@string/title_activity_profile_of_user"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ExtendSearch"
+            android:label="@string/title_activity_extend_search"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Search"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Advertisement" />
         <activity
             android:name=".Login"
             android:label="@string/title_activity_login"
@@ -33,6 +88,28 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <service
+            android:name=".MessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/appdefaultico" />
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
     </application>
 
 </manifest>

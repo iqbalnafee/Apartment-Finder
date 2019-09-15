@@ -114,4 +114,11 @@ public class AdminUi extends AppCompatActivity {
         Intent intent = new Intent(AdminUi.this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void FClick(View v)
+    {
+        Intent intent = new Intent(AdminUi.this, Chattting.class);
+        startActivity(intent);
+    }
+
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdLogIn"
-    android:background="@drawable/drawable_purple_gradient">
+    >
 
     <TextView
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         android:text="You must Log in First"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="200dp"
         android:textSize="35dp"
         android:textStyle="bold" />
@@ -27,7 +27,8 @@
         android:layout_marginRight="20dp"
         android:background="@color/white"
         android:text="Log in"
-        android:textColor="@color/colorPrimary"
+        android:backgroundTint="@color/com_facebook_blue"
+        android:textColor="@color/black"
         android:textSize="30dp"/>
 
 </RelativeLayout>

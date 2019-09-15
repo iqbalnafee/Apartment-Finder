@@ -27,13 +27,13 @@ import com.google.firebase.iid.InstanceIdResult;
 import java.util.Date;
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
-    EditText name,email,password;
+    EditText name,email,password,mobile,address;
     Button mRegisterbtn;
     TextView mLoginPageBack;
     FirebaseAuth mAuth;
     FirebaseDatabase ref;
     DatabaseReference mdatabase;
-    String Name,Email,Password;
+    String Name,Email,Password,Mobile,Address;
     ProgressDialog mDialog;
     String mToken;
     @Override
@@ -43,6 +43,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         name = (EditText)findViewById(R.id.register_name);
         email = (EditText)findViewById(R.id.register_email);
         password = (EditText)findViewById(R.id.register_password);
+        mobile = (EditText)findViewById(R.id.mobile);
+        address = (EditText)findViewById(R.id.address);
+
         mRegisterbtn = (Button)findViewById(R.id.register_btn);
         mLoginPageBack = (TextView)findViewById(R.id.loginBackbtn);
         // for auth
@@ -77,20 +80,42 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         Name = name.getText().toString().trim();
         Email = email.getText().toString().trim();
         Password = password.getText().toString().trim();
+        Mobile = mobile.getText().toString().trim();
+        Address = address.getText().toString().trim();
 
-        if (TextUtils.isEmpty(Name)){
-            Toast.makeText(Register.this, "Enter Name", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(Name)) {
+            name.setError("Enter User Name");
+            name.requestFocus();
             return;
         }else if (TextUtils.isEmpty(Email)){
-            Toast.makeText(Register.this, "Enter Email", Toast.LENGTH_SHORT).show();
+            email.setError("Enter Email");
+            email.requestFocus();
             return;
         }else if (TextUtils.isEmpty(Password)){
-            Toast.makeText(Register.this, "Enter Password", Toast.LENGTH_SHORT).show();
+            password.setError("Enter Password");
+            password.requestFocus();
             return;
         }else if (Password.length()<6){
-            Toast.makeText(Register.this,"Passwor must be greater then 6 digit",Toast.LENGTH_SHORT).show();
+            password.setError("Password must be greater than 6");
+            password.requestFocus();
             return;
         }
+        else if (TextUtils.isEmpty(Mobile)){
+            mobile.setError("Enter Mobile Number");
+            mobile.requestFocus();
+            return;
+        }
+        else if (Mobile.length()<10){
+            mobile.setError("Mobile Number be greater than 10");
+            mobile.requestFocus();
+            return;
+        }
+        else if (TextUtils.isEmpty(Address)){
+            address.setError("Enter Address");
+            address.requestFocus();
+            return;
+        }
+
         mDialog.setMessage("Creating User please wait...");
         mDialog.setCanceledOnTouchOutside(false);
         mDialog.show();
@@ -117,8 +142,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(Register.this,"Check your Email for verification",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this,"Check your Email for verification",Toast.LENGTH_LONG).show();
                         FirebaseAuth.getInstance().signOut();
+                        Intent intent1 = new Intent(Register.this, MainActivity.class);
+                        //Toast.makeText(MainActivity.this, "You sent " + str, Toast.LENGTH_LONG).show();
+                        startActivity(intent1);
                     }
                 }
             });
@@ -141,7 +169,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                 getDisplayName(),
                 getUserEmail(),
                 new Date().getTime(),
-                mToken
+                mToken,
+                Mobile,
+                Address
         );
     }
 

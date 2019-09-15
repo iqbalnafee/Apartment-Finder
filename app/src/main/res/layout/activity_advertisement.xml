@@ -46,13 +46,22 @@
 
         </RadioGroup>
 
-    <EditText
-        android:id="@+id/flat_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:inputType="number"
-        android:hint="Price in Tk" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/flat_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Price in ৳"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textAlignment="center" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <EditText
         android:id="@+id/no_of_bedRooms"
         android:layout_width="match_parent"
@@ -61,14 +70,18 @@
         android:textAlignment="center"
         android:inputType="number"
         android:hint="Number Of Bedrooms" />
-    <EditText
-        android:id="@+id/location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/no_of_bedRooms"
-        android:textAlignment="center"
-        android:hint="Location" />
-
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/locations2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/flat_price"
+            android:textAlignment="center"
+            android:hint="Enter Loaction(format: area,sector,road)" />
+        </android.support.design.widget.TextInputLayout>
         <TextView
             android:id="@+id/gas"
             android:layout_width="match_parent"
@@ -204,6 +217,10 @@
 
         </RadioGroup>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/SchoolName"
             android:layout_width="match_parent"
@@ -211,6 +228,7 @@
             android:layout_below="@id/no_of_bedRooms"
             android:textAlignment="center"
             android:hint="School Name" />
+        </android.support.design.widget.TextInputLayout>
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -243,6 +261,10 @@
                 android:onClick="HospitalClickedNo"/>
 
         </RadioGroup>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/HospitalName"
             android:layout_width="match_parent"
@@ -250,6 +272,10 @@
             android:layout_below="@id/no_of_bedRooms"
             android:textAlignment="center"
             android:hint="Hospital Name" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
             android:id="@+id/BusStandName"
             android:layout_width="match_parent"
@@ -257,6 +283,7 @@
             android:layout_below="@id/no_of_bedRooms"
             android:textAlignment="center"
             android:hint="Nearby Bus Stand" />
+        </android.support.design.widget.TextInputLayout>
 
         <ImageView
             android:id="@+id/image_to_upload1"

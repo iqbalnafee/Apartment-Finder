@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/drawable_green_gradient"
+    android:background="@color/white"
     tools:context=".CheckValidationForm">
 
     <TextView
         android:id="@+id/title"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -40,7 +41,7 @@
         android:layout_marginTop="100dp"
         android:layout_toEndOf="@+id/fLabel"
         android:layout_toRightOf="@id/fLabel"
-        android:fontFamily="@font/nunito_semibold"
+
         android:text="First Name"
         android:textColor="@color/black"
         android:textSize="16sp" />
@@ -269,37 +270,39 @@
         android:layout_marginRight="59dp"></android.support.v7.widget.RecyclerView>
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ImageNIDFront"
         android:layout_marginTop="41dp"
         android:text="Validate"
-        android:background="@drawable/drawable_green_gradient"
+        android:background="@color/colorGreen_A400"
         android:layout_marginRight="200dp"
-        android:layout_marginLeft="18dp"
+        android:layout_marginLeft="50dp"
         android:id="@+id/ValidateButton"
         android:onClick="ClickValidate"/>
 
     <Button
         android:id="@+id/InValidateButton"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ImageNIDBack"
         android:layout_marginTop="41dp"
         android:layout_marginLeft="222dp"
-        android:background="@drawable/drawable_green_gradient"
+        android:background="@color/colorRed_A400"
         android:text="InValidate"
         android:layout_marginRight="18dp"
         android:onClick="ClickInValidate"/>
+
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/InValidateButton"
-        android:background="@drawable/drawable_green_gradient"
-        android:layout_marginLeft="39dp"
+
+        android:layout_marginLeft="135dp"
+        android:layout_marginTop="32dp"
         android:layout_marginRight="39dp"
-        android:text="Home"
+        android:background="@color/com_facebook_blue"
         android:onClick="HomeButton"
-        android:layout_marginTop="8dp"/>
+        android:text="Home" />
 
 </RelativeLayout>

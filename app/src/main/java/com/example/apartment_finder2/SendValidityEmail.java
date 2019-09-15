@@ -12,7 +12,7 @@ public class SendValidityEmail extends AppCompatActivity {
     private EditText mEditTextTo;
     private EditText mEditTextSubject;
     private EditText mEditTextMessage;
-    String sss;
+    String ss="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,10 @@ public class SendValidityEmail extends AppCompatActivity {
         mEditTextSubject = findViewById(R.id.edit_text_subject);
         mEditTextMessage = findViewById(R.id.edit_text_message);
 
-
-
+        final String EimageURL=getIntent().getStringExtra("RecipientMail");
+        ss=EimageURL;
+        mEditTextTo.setText(ss);
+        mEditTextSubject.setText("On regards of your post on Apartment Finder app");
         Button buttonSend = findViewById(R.id.button_send);
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override

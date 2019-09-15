@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -48,8 +49,8 @@ public class Advertisement extends AppCompatActivity {
     private EditText mEditTextFileName,mPrice,mBedrooms,mLoc,mSchool,mHospital,mBus;
     private ImageView mImageView1,mImageView2,mImageView3,mImageView4;
     private ProgressBar mProgressBar,mProgressBar1,mProgressBar2,mProgressBar3,mProgressBar4;
-    private int count=1;
-
+    public int count=1;
+    int track=1;
     String Prices,Bedrooms,Loc,mDownloadUrl1,mDownloadUrl2,mDownloadUrl3,mDownloadUrl4;
 
     private Uri mImageUri;
@@ -74,7 +75,7 @@ public class Advertisement extends AppCompatActivity {
         mButtonUpload = findViewById(R.id.button_upload);
         mPrice = findViewById(R.id.flat_price);
         mBedrooms = findViewById(R.id.no_of_bedRooms);
-        mLoc = findViewById(R.id.location);
+        mLoc = findViewById(R.id.locations2);
         mSchool=findViewById(R.id.SchoolName);
         mHospital=findViewById(R.id.HospitalName);
         mBus=findViewById(R.id.BusStandName);
@@ -120,11 +121,13 @@ public class Advertisement extends AppCompatActivity {
             }
         });
 
+        //mButtonUpload.setVisibility(View.INVISIBLE);
+
         mButtonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (mUploadTask != null && mUploadTask.isInProgress()&&count<4) {
+                if (count<4) {
                     Toast.makeText(Advertisement.this, "Please Upload all 4 images or Wait For Upload to all", Toast.LENGTH_SHORT).show();
                 } else {
                     uploadInfoInDatabase();
@@ -177,7 +180,7 @@ public class Advertisement extends AppCompatActivity {
                                             mProgressBar1.setProgress(0);
                                         }
                                     }, 1000000000);
-                                    Toast.makeText(Advertisement.this, "Upload successful", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Advertisement.this, "Uploaded first image", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -209,7 +212,7 @@ public class Advertisement extends AppCompatActivity {
                                             mProgressBar2.setProgress(0);
                                         }
                                     }, 1000000000);
-                                    Toast.makeText(Advertisement.this, "Upload successful", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Advertisement.this, "Uploaded second image", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -241,7 +244,7 @@ public class Advertisement extends AppCompatActivity {
                                             mProgressBar3.setProgress(0);
                                         }
                                     }, 1000000000);
-                                    Toast.makeText(Advertisement.this, "Upload successful", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Advertisement.this, "Uploaded third image", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -274,7 +277,7 @@ public class Advertisement extends AppCompatActivity {
                                             mProgressBar4.setProgress(0);
                                         }
                                     }, 1000000000);
-                                    Toast.makeText(Advertisement.this, "Upload successful", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Advertisement.this, "Upload fourth image", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -300,11 +303,30 @@ public class Advertisement extends AppCompatActivity {
         mBusStr=mBus.getText().toString().trim();
         String s=Loc.toLowerCase();
 
+        if (TextUtils.isEmpty(Prices)) {
+            mPrice.setError("Enter Price in ৳");
+            mPrice.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(Bedrooms)) {
+            mBedrooms.setError("Enter Bedrooms");
+            mBedrooms.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(Loc)) {
+            mLoc.setError("Enter Location");
+            mLoc.requestFocus();
+            return;
+        }
+
+
         Upload upload = new Upload(LoggedEmail,Prices,Bedrooms,s,mDownloadUrl1,mDownloadUrl2,mDownloadUrl3,mDownloadUrl4,mSchoolStr,mHospitalStr,
-                mBusStr,Group2StrGas,Group3StrLift,Group4StrAmenities,Group1StrRentSell);
+                mBusStr,Group2StrGas,Group3StrLift,Group4StrAmenities,Group1StrRentSell,LoggedEmail);
         String uploadId = mDatabaseRef.push().getKey();
         mDatabaseRef.child(uploadId).setValue(upload);
         Toast.makeText(Advertisement.this, "Upload in DataBase is successful ", Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(Advertisement.this,MainActivity.class);
+        startActivity(intent);
     }
     public void RentClicked(View v) {
         int radioId=mGroup1.getCheckedRadioButtonId();
@@ -368,7 +390,7 @@ public class Advertisement extends AppCompatActivity {
         Group6StrHospital= mRB1.getText().toString();
     }
     public void HospitalClickedNo(View v) {
-        mSchool.setText("");
+        mHospital.setText("");
         mHospital.setVisibility(View.INVISIBLE);
         int radioId=mGroup6.getCheckedRadioButtonId();
         mRB1=findViewById(radioId);
