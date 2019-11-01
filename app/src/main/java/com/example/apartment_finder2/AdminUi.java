@@ -44,7 +44,12 @@ public class AdminUi extends AppCompatActivity {
         mCountValNotif=findViewById(R.id.CountValNotif);
         //mValidityList.setVisibility(View.INVISIBLE);
         ref= FirebaseDatabase.getInstance().getReference("ValidationForm");
+<<<<<<< HEAD
 
+=======
+        //mvalListLayOut=findViewById(R.id.valListLayOut);
+        //mvalListLayOut.setVisibility(View.INVISIBLE);
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         mCountValNotif.setVisibility(View.INVISIBLE);
         up=new UploadValidationForm();
         //final List<String> list = new ArrayList<String>();

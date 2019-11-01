@@ -22,7 +22,10 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+<<<<<<< HEAD
 import android.widget.ImageButton;
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -44,12 +47,19 @@ import com.squareup.picasso.Picasso;
 import java.util.Calendar;
 
 public class ValidationForm extends AppCompatActivity {
+<<<<<<< HEAD
     private EditText mFirst_Name,mLast_name,mOccupation,mNIDorPN,mMbl,mPermanent;
     TextView mAge;
     private RadioGroup mGroup1,mGroup2;
     private RadioButton mRB1,mRB2;
     private Button mSubmit;
     ImageButton mcalb;
+=======
+    private EditText mFirst_Name,mLast_name,mAge,mOccupation,mNIDorPN,mMbl,mPermanent;
+    private RadioGroup mGroup1,mGroup2;
+    private RadioButton mRB1,mRB2;
+    private Button mSubmit;
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
     private TextView mEmail_show;
     String FNstr,LNstr,Agestr,Occstr,NIDstr,mGroup1str,mGroup2str,mESstr,MobileTel,mDownloadUrl1,mDownloadUrl2;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -67,7 +77,10 @@ public class ValidationForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_validation_form);
+<<<<<<< HEAD
         mcalb = findViewById(R.id.calb);
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         mFirst_Name = findViewById(R.id.First_Name);
         mLast_name =findViewById(R.id.Last_Name);
         mSubmit=findViewById(R.id.form_submit);
@@ -99,7 +112,11 @@ public class ValidationForm extends AppCompatActivity {
         });
 
 
+<<<<<<< HEAD
         mcalb.setOnClickListener(new View.OnClickListener() {
+=======
+        mAge.setOnClickListener(new View.OnClickListener() {
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
             @Override
             public void onClick(View view) {
                 hideKeyboard(ValidationForm.this);

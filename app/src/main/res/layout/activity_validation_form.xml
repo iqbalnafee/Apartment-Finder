@@ -22,7 +22,11 @@
         android:text="Apartment Finder Validation Form"
         android:textColor="@color/black"
         android:layout_marginRight="25dp"
+<<<<<<< HEAD
         android:layout_marginLeft="20dp"
+=======
+        android:layout_marginLeft="10dp"
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         android:textSize="45dp"
         android:textStyle="bold" />
     <TextView
@@ -54,6 +58,7 @@
 
         android:backgroundTint="@color/black"
         android:defaultFocusHighlightEnabled="true"/>
+<<<<<<< HEAD
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -82,6 +87,18 @@
 
     </RelativeLayout>
         <TextView
+=======
+    <EditText
+        android:id="@+id/Age"
+        android:layout_below="@+id/Last_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date of Birth "
+        android:backgroundTint="@color/black"
+        android:defaultFocusHighlightEnabled="true"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         android:id="@+id/sex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -90,8 +107,12 @@
         android:textSize="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="220dp"
+<<<<<<< HEAD
         android:textColor="@color/black"
         android:layout_marginTop="10dp"/>
+=======
+        android:textColor="@color/black"/>
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

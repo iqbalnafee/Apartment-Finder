@@ -15,11 +15,17 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+<<<<<<< HEAD
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+=======
+
+import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,20 +33,30 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
 import java.util.Random;
 
 import static com.example.apartment_finder2.MainActivity.LoggedEmail;
 
 public class Extendfavorites extends AppCompatActivity {
+<<<<<<< HEAD
     private DatabaseReference mUserDatabase,ref,ref3;
+=======
+    private DatabaseReference mUserDatabase,ref;
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
     Upload up;
     String simageURL;
     private RecyclerView mResultList;
     User us;
     favourites fav;
+<<<<<<< HEAD
     private List<String> Userlist;
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +66,12 @@ public class Extendfavorites extends AppCompatActivity {
         us=new User();
         fav=new favourites();
         mUserDatabase = FirebaseDatabase.getInstance().getReference("uploads");
+<<<<<<< HEAD
         ref = FirebaseDatabase.getInstance().getReference("Favorites");
         //ref3=ref.child("Favourites");
+=======
+        ref = FirebaseDatabase.getInstance().getReference("Users");
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         mResultList = findViewById(R.id.result_listFav);
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -59,6 +79,7 @@ public class Extendfavorites extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //Log.d("Logged: ",LoggedEmail);
                 int c=0;
+<<<<<<< HEAD
 
                 for(DataSnapshot ds:dataSnapshot.getChildren())
                 {
@@ -67,6 +88,22 @@ public class Extendfavorites extends AppCompatActivity {
                     if(fav.getUid().equalsIgnoreCase(FirebaseAuth.getInstance().getCurrentUser().getUid()))
                     {
                         firebaseUserSearch(fav.getImageUrl());
+=======
+                for(DataSnapshot ds:dataSnapshot.getChildren())
+                {
+                    us=ds.getValue(User.class);
+                    fav=ds.getValue(favourites.class);
+                    if(us.getEmail().equalsIgnoreCase(LoggedEmail))
+                    {
+                        //c= (int) ds.child("Favourites").getChildrenCount();
+                        //String s=ds.child("imageUrl: ").getValue().toString();
+                        //String[] parts1 = s.split(",");
+                        //String[] parts2 = parts1[0].split("\\{");
+                        //firebaseUserSearch(ds.child("Favourites").getValue().toString());
+                        //Log.d("EFRT",    s);
+                        //Log.d("EFRT",    parts2[1]+" ");
+                        break;
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
                     }
                 }
             }
@@ -78,8 +115,11 @@ public class Extendfavorites extends AppCompatActivity {
         });
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
     }
     private void firebaseUserSearch(String str) {
 
@@ -200,7 +240,10 @@ public class Extendfavorites extends AppCompatActivity {
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
 }

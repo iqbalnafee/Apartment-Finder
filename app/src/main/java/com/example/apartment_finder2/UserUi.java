@@ -55,6 +55,7 @@ public class UserUi extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+<<<<<<< HEAD
 
         ref2.addValueEventListener(new ValueEventListener() {
             @Override
@@ -78,6 +79,8 @@ public class UserUi extends AppCompatActivity {
             }
         });
 
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -121,7 +124,31 @@ public class UserUi extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
 
+=======
+        ref2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //Log.d("Logged: ",LoggedEmail);
+                int c=0;
+                for(DataSnapshot ds:dataSnapshot.getChildren())
+                {
+                    upl=ds.getValue(Upload.class);
+                    if(upl.getmLoggedEmail().equalsIgnoreCase(LoggedEmail))
+                    {
+                        ++c;
+                    }
+                }
+                mPost.setText(String.valueOf(c));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
 
 
 

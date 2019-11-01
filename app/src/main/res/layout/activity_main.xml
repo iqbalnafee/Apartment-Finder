@@ -151,18 +151,28 @@
                 app:cardElevation="6dp"
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
+<<<<<<< HEAD
                 android:id="@+id/chtBot"
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
                 >
 
                 <LinearLayout
                     android:gravity="center"
                     android:padding="16dp"
                     android:layout_width="match_parent"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
                     >
 
                     <ImageView
                         android:src="@drawable/chatbot1"
+=======
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:src="@drawable/treding"
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
                         android:layout_width="80dp"
                         android:layout_height="80dp" />
                     <TextView

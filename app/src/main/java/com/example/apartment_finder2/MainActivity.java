@@ -41,7 +41,11 @@ public class MainActivity extends AppCompatActivity  {
     private CardView mLoginOption;
     private CardView mloanCalc;
     private CardView mProfile;
+<<<<<<< HEAD
     private CardView mFaques,mfeed,mChtBot;
+=======
+    private CardView mFaques,mfeed;
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
     private Button mLogoutOption;
     private TextView mlogAndper;
     private CardView make_advertise;
@@ -67,12 +71,16 @@ public class MainActivity extends AppCompatActivity  {
         mSearch=findViewById(R.id.Cardsearch);
         mfeed=findViewById(R.id.FeedbackMessage2);
         img=findViewById(R.id.InOrOut);
+<<<<<<< HEAD
         mChtBot=findViewById(R.id.chtBot);
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
 
         ref=FirebaseDatabase.getInstance().getReference("ValidationForm");
         up=new UploadValidationForm();
 
         mSearch.setOnClickListener(new View.OnClickListener() {
+<<<<<<< HEAD
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(MainActivity.this, Search.class);
@@ -139,6 +147,66 @@ public class MainActivity extends AppCompatActivity  {
                 }
             }
         });
+=======
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, Search.class);
+                startActivity(intent1);
+            }
+        });
+
+        mfeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checker==0)
+                {
+                    AlertDialog alertDialog=builderAlertDialog("Sorry!","Your must log in first" ,true,MainActivity.this);
+                    alertDialog.show();
+                    return;
+                }
+                else
+                {
+                    Intent intent = new Intent(MainActivity.this, FeedbackForm.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        mloanCalc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, loanCalculation.class);
+                startActivity(intent1);
+            }
+        });
+
+        mFaques.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NewSubmission.class);
+                intent.putExtra("DrawerType","faq");
+                startActivity(intent);
+            }
+        });
+
+        mProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(checker==0)
+                {
+                    AlertDialog alertDialog=builderAlertDialog("Sorry!","Your must log in first" ,true,MainActivity.this);
+                    alertDialog.show();
+                    return;
+                }
+                else
+                {
+                    Intent intent = new Intent(MainActivity.this, UserUi.class);
+                    startActivity(intent);
+                }
+            }
+        });
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         /*mLogoutOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -321,6 +389,41 @@ public class MainActivity extends AppCompatActivity  {
     {
         Intent intent = new Intent(MainActivity.this, NewSubmission.class);
         intent.putExtra("DrawerType","Blog");
+<<<<<<< HEAD
+        startActivity(intent);
+    }
+    public void feedbackClick (View v)
+    {
+        if(checker==0)
+        {
+            AlertDialog alertDialog=builderAlertDialog("Sorry!","Your Must Log in First" ,true,MainActivity.this);
+            alertDialog.show();
+            return;
+        }
+        else
+        {
+            Intent intent = new Intent(MainActivity.this, FeedbackForm.class);
+            startActivity(intent);
+        }
+    }
+    public void faqClick (View v)
+    {
+        Intent intent = new Intent(MainActivity.this, NewSubmission.class);
+        intent.putExtra("DrawerType","faq");
+        startActivity(intent);
+    }
+    public void formSub(View v)
+    {
+        Intent intent = new Intent(MainActivity.this, icchamoto.class);
+        //intent.putExtra("DrawerType","faq");
+        startActivity(intent);
+    }
+    public void See(View v)
+    {
+        Intent intent = new Intent(MainActivity.this, icchamoto.class);
+        //intent.putExtra("DrawerType","faq");
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         startActivity(intent);
     }
     public void feedbackClick (View v)
@@ -355,6 +458,7 @@ public class MainActivity extends AppCompatActivity  {
         //intent.putExtra("DrawerType","faq");
         startActivity(intent);
     }
+
 
 
 

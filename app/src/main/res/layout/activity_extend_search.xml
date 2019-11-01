@@ -35,7 +35,11 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginTop="20dp"
+<<<<<<< HEAD
             android:flipInterval="3000"
+=======
+            android:flipInterval="4000"
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
             android:autoStart="true"
             android:id="@+id/vFlipper"
             android:inAnimation="@android:anim/slide_in_left"
@@ -104,7 +108,11 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
+<<<<<<< HEAD
             android:layout_marginTop="430dp"
+=======
+            android:layout_marginTop="420dp"
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
             android:id="@+id/fLabel"
             android:fontFamily="@font/nunito_semibold"
             android:text="Rent or Sell:"
@@ -118,7 +126,11 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="20dp"
+<<<<<<< HEAD
             android:layout_marginTop="430dp"
+=======
+            android:layout_marginTop="420dp"
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
             android:layout_toEndOf="@+id/fLabel"
             android:layout_toRightOf="@id/fLabel"
             android:fontFamily="@font/nunito_semibold"
@@ -366,7 +378,11 @@
             style="@style/com_facebook_button_like"
             android:layout_marginTop="30dp"
             android:text="Send Mail"
+<<<<<<< HEAD
             android:layout_marginLeft="40dp"
+=======
+            android:layout_marginLeft="70dp"
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
             android:id="@+id/MakeChat"
             android:background="@color/LightBlue"
             android:src="@drawable/ic_mail_black_24dp"
@@ -412,6 +428,7 @@
             android:onClick="ViewMap"
             />
 
+<<<<<<< HEAD
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -431,6 +448,8 @@
             android:onClick="clickMessage1"
             />
 
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         <ImageView
             android:id="@+id/wish"
             android:layout_width="wrap_content"

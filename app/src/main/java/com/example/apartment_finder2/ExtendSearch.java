@@ -52,7 +52,11 @@ public class ExtendSearch extends AppCompatActivity {
 
     private TextView rent,price,bedrooms,location,gas,lift,secu,school,hos,bus,mEmailShow;
 
+<<<<<<< HEAD
     private DatabaseReference mUserDatabase,mFavRef;
+=======
+    private DatabaseReference mUserDatabase;
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
     private DatabaseReference ref,mChatting;
     private FirebaseDatabase mdataBase;
     private RecyclerView mResultList;
@@ -71,7 +75,10 @@ public class ExtendSearch extends AppCompatActivity {
     User us;
     int level;
     private ViewFlipper viewFlipper;
+<<<<<<< HEAD
     String Cemail="";
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +123,11 @@ public class ExtendSearch extends AppCompatActivity {
         mWish=findViewById(R.id.wish);
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         final SmileRating smileRating = (SmileRating) findViewById(R.id.smile_rating);
         smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
             @Override
@@ -154,7 +164,10 @@ public class ExtendSearch extends AppCompatActivity {
         us=new User();
 
         mUserDatabase = FirebaseDatabase.getInstance().getReference("uploads");
+<<<<<<< HEAD
         mFavRef = FirebaseDatabase.getInstance().getReference("Favorites");
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         ref=FirebaseDatabase.getInstance().getReference("ValidationForm");
         mChatting=FirebaseDatabase.getInstance().getReference("Users");
         final String EimageURL=getIntent().getStringExtra("image");
@@ -184,7 +197,10 @@ public class ExtendSearch extends AppCompatActivity {
                         str5=up.getmLoggedEmail();
                         SendLocation=up.getmLocation();
 
+<<<<<<< HEAD
                         Cemail=up.getmEs();
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
                         mEmailShow.setText(up.getmEs());
                         rent.setText(up.getmRentOrSell());
                         price.setText(up.getmPrice()+" Tk");
@@ -469,10 +485,17 @@ public class ExtendSearch extends AppCompatActivity {
         else
         {
             Toast.makeText(ExtendSearch.this,"Your report is submitted",Toast.LENGTH_SHORT).show();
+<<<<<<< HEAD
             //favourites report=new favourites(str1);
             String uploadId = mChatting.push().getKey();
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             mChatting.child(user.getUid()).child("Reported").child(uploadId).setValue(str1);
+=======
+            favourites report=new favourites(str1);
+            String uploadId = mChatting.push().getKey();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            mChatting.child(user.getUid()).child("Reported").child(uploadId).setValue(report);
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         }
     }
 
@@ -498,6 +521,7 @@ public class ExtendSearch extends AppCompatActivity {
         else
         {
             Toast.makeText(ExtendSearch.this,"Add to Favourites",Toast.LENGTH_SHORT).show();
+<<<<<<< HEAD
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             int color = 0xFFFF0000;
             mWish.setColorFilter(color);
@@ -526,6 +550,15 @@ public class ExtendSearch extends AppCompatActivity {
             Intent MapIntent = new Intent(this, Chattting.class);
             MapIntent.putExtra("chatWith",Cemail);
             startActivity(MapIntent);
+=======
+            int color = 0xFFFF0000;
+            mWish.setColorFilter(color);
+            favourites fav=new favourites(str1);
+            String uploadId = mChatting.push().getKey();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            //mChatting.child(user.getUid()).child("Favourites").child(uploadId).setValue(fav);
+            mChatting.child(user.getUid()).child("Favourites").child(uploadId).setValue(fav);
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         }
 
 

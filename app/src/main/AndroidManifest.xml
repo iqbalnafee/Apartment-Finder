@@ -7,8 +7,11 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
 
     <supports-screens
         android:largeScreens="true"
@@ -24,8 +27,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
         <activity android:name=".ChatBot"></activity>
         <activity android:name=".FavoritesList" />
+=======
+        <activity android:name=".FavoritesList"></activity>
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         <activity android:name=".Extendfavorites" />
         <activity android:name=".loanCalculation" />
         <activity android:name=".NewFrontGui" />

@@ -24,7 +24,10 @@ public class Chattting extends AppCompatActivity {
     private FloatingActionButton fab;
     private ListView mlistView;
     private FirebaseListAdapter<ChatMessage> adapter;
+<<<<<<< HEAD
     String ChatWith="";
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +37,22 @@ public class Chattting extends AppCompatActivity {
         input=findViewById(R.id.input);
         fab =findViewById(R.id.fab);
         final List<String> list = new ArrayList<String>();
+<<<<<<< HEAD
         final String EimageURL=getIntent().getStringExtra("chatWith");
         ChatWith=EimageURL;
+=======
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 FirebaseDatabase.getInstance()
+<<<<<<< HEAD
                         .getReference("Chat")
                         .child(LoggedEmail+" "+ChatWith)
+=======
+                        .getReference()
+>>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
                         .push()
                         .setValue(new ChatMessage(input.getText().toString(),
                                 FirebaseAuth.getInstance()
