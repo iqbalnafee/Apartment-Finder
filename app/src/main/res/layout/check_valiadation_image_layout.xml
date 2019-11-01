@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/ImageNIDFront"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+    <ImageView
+        android:id="@+id/ImageNIDBack"
+        android:layout_toEndOf="@+id/ImageNIDFront"
+        android:layout_toRightOf="@+id/ImageNIDFront"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/result_list_Check"
+        android:layout_width="387dp"
+        android:layout_height="327dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="59dp"></android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

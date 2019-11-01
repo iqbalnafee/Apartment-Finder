@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Map">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/google_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_below="@+id/B_schools"
+
+        />
+    <!--<SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search"
+        android:id="@+id/sv_location"
+        android:iconifiedByDefault="false"
+        android:layout_margin="10dp"
+        android:elevation="5dp"
+        android:background="@drawable/bg_round"/>-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search"
+        android:id="@+id/tv_location"
+        android:iconifiedByDefault="false"
+        android:layout_margin="10dp"
+        android:text="Location.."
+        android:textSize="26dp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:elevation="5dp"
+        android:background="@drawable/bg_round"/>
+    <ImageButton
+        android:id="@+id/B_hopistals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_location"
+        android:onClick="onClick"
+        android:layout_marginLeft="81dp"
+        android:text="Hospitals"
+        android:src="@drawable/ic_local_hospital_black_24dp"
+        android:background="@color/white"/>
+    <ImageButton
+        android:id="@+id/B_schools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_location"
+        android:layout_toEndOf="@+id/B_hopistals"
+        android:layout_toRightOf="@id/B_hopistals"
+        android:layout_marginLeft="40dp"
+        android:onClick="onClick"
+        android:text="Schools"
+        android:src="@drawable/ic_school_black_24dp"
+        android:background="@color/white"/>
+
+    <ImageButton
+        android:id="@+id/B_directions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_location"
+        android:layout_toRightOf="@+id/B_schools"
+        android:layout_marginLeft="40dp"
+        android:onClick="onClick"
+        android:text="Get Direction"
+        android:src="@drawable/ic_directions_black_24dp"
+        android:background="@color/white"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewRS"
+        android:layout_below="@+id/google_map"/>
+
+
+</RelativeLayout>

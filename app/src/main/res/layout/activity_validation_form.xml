@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_edit_white"
+    tools:context=".ValidationForm">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:background="@color/LightBlue"
+        android:id="@+id/title"
+        android:layout_width="500dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="Apartment Finder Validation Form"
+        android:textColor="@color/black"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="45dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/email_show"
+        android:layout_below="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="21dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"/>
+    <EditText
+        android:id="@+id/First_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="First Name"
+        android:layout_marginLeft="10dp"
+
+        android:backgroundTint="@color/black"
+        android:defaultFocusHighlightEnabled="true"/>
+    <EditText
+        android:id="@+id/Last_Name"
+        android:layout_below="@+id/First_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last Name"
+        android:layout_marginLeft="10dp"
+
+        android:backgroundTint="@color/black"
+        android:defaultFocusHighlightEnabled="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/Age"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Date of Birth "
+        android:backgroundTint="@color/black"
+        android:defaultFocusHighlightEnabled="true"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="1dp"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/Age"
+        android:src="@drawable/cal2"
+        android:background="@color/white"
+        android:id="@+id/calb"
+
+        />
+
+    </RelativeLayout>
+        <TextView
+        android:id="@+id/sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Age"
+        android:text="Sex"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="220dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"/>
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sex"
+        android:id="@+id/groupOfRB">
+
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:onClick="checkButton1"
+            />
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radio_male"
+            android:text="Female"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:onClick="checkButton1"
+            />
+
+    </RadioGroup>
+    <EditText
+        android:id="@+id/occupation"
+        android:layout_below="@+id/groupOfRB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Occupation"
+        android:layout_marginLeft="10dp"
+
+        android:backgroundTint="@color/black"
+        android:defaultFocusHighlightEnabled="true"/>
+    <EditText
+        android:id="@+id/NIDorPN"
+        android:layout_below="@+id/occupation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Permanent Address"
+        android:backgroundTint="@color/black"
+        android:layout_marginLeft="10dp"
+        android:defaultFocusHighlightEnabled="true"/>
+        <EditText
+            android:id="@+id/Mbl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile Or Telephone"
+            android:backgroundTint="@color/black"
+            android:layout_marginLeft="10dp"
+            android:inputType="number"
+            android:defaultFocusHighlightEnabled="true"
+            android:enabled="true"/>
+    <TextView
+        android:id="@+id/rentORsell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/NIDorPN"
+        android:text="Can Client Call You?"
+        android:textSize="19dp"
+        android:layout_marginRight="5dp"
+
+        android:textColor="@color/black"
+        android:layout_marginLeft="10dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/choice"
+        android:layout_below="@+id/Mbl">
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_sell"
+            android:text="Yes"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:onClick="checkButton2"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_rent"
+            android:layout_below="@id/radio_sell"
+            android:text="No"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:onClick="checkButton2"/>
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Photo of Back and Front of Your NID"
+        android:textSize="19dp"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/black"
+
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:id="@+id/FrontNID"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="0dp"
+        app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
+
+
+     <ProgressBar
+         android:id="@+id/FrontNIDProgBar"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+         android:layout_alignParentStart="true"
+         android:layout_alignParentLeft="true"
+         android:layout_marginBottom="16dp"/>
+
+    <ImageView
+        android:id="@+id/BackNID"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="0dp"
+        app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
+    <ProgressBar
+        android:id="@+id/BackNIDProgBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/form_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Mbl"
+            android:layout_marginLeft="130dp"
+            android:background="@color/LightBlue"
+            android:text="Submit"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+
+    </LinearLayout>
+
+</ScrollView>

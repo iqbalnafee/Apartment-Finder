@@ -9,14 +9,23 @@ public class Upload {
     private String mPrice;
     private String mNumber_Of_Bedrooms;
     private String mLocation;
+    private String mLoggedEmail;
+    private String mSchool;
+    private String mHospital;
+    private String mBus;
+    private String mGas;
+    private String mLift;
+    private String mSecurity;
+    private String mRentOrSell;
+    private String mEs;
     public Upload() {
         //empty constructor needed
     }
 
-    public Upload(String price,String no_bedrooms,String Loc,String imageUrl1,String imageUrl2,String imageUrl3,String imageUrl4) {
+    public Upload(String loggedemail ,String price,String no_bedrooms,String Loc,String imageUrl1,String imageUrl2,String imageUrl3,String imageUrl4,
+                  String school,String hospital,String bus,String gas,String lift,String security,String rentOsell,String LEmail) {
 
-
-
+        mLoggedEmail=loggedemail;
         mPrice=price;
         mNumber_Of_Bedrooms=no_bedrooms;
         mLocation=Loc;
@@ -24,6 +33,24 @@ public class Upload {
         mImageUrl2=imageUrl2;
         mImageUrl3=imageUrl3;
         mImageUrl4=imageUrl4;
+        mSchool=school;
+        mHospital=hospital;
+        mBus=bus;
+        mGas=gas;
+        mLift=lift;
+        mSecurity=security;
+        mRentOrSell=rentOsell;
+        mEs=LEmail;
+
+
+    }
+
+    public String getmLoggedEmail() {
+        return mLoggedEmail;
+    }
+
+    public void setmLoggedEmail(String mLoggedEmail) {
+        this.mLoggedEmail = mLoggedEmail;
     }
 
     public String getName() {
@@ -58,6 +85,7 @@ public class Upload {
         this.mNumber_Of_Bedrooms = mNumber_Of_Bedrooms;
     }
 
+
     public String getmImageUrl() {
         return mImageUrl1;
     }
@@ -82,5 +110,69 @@ public class Upload {
     }
     public void setmImageUrl4(String ImageUrl) {
         this.mImageUrl4 = ImageUrl;
+    }
+
+    public String getmSchool() {
+        return mSchool;
+    }
+
+    public void setmSchool(String mSchool) {
+        this.mSchool = mSchool;
+    }
+
+    public String getmHospital() {
+        return mHospital;
+    }
+
+    public void setmHospital(String mHospital) {
+        this.mHospital = mHospital;
+    }
+
+    public String getmBus() {
+        return mBus;
+    }
+
+    public void setmBus(String mBus) {
+        this.mBus = mBus;
+    }
+
+    public String getmGas() {
+        return mGas;
+    }
+
+    public void setmGas(String mGas) {
+        this.mGas = mGas;
+    }
+
+    public String getmLift() {
+        return mLift;
+    }
+
+    public void setmLift(String mLift) {
+        this.mLift = mLift;
+    }
+
+    public String getmSecurity() {
+        return mSecurity;
+    }
+
+    public void setmSecurity(String mSecurity) {
+        this.mSecurity = mSecurity;
+    }
+
+    public String getmRentOrSell() {
+        return mRentOrSell;
+    }
+
+    public void setmRentOrSell(String mRentOrSell) {
+        this.mRentOrSell = mRentOrSell;
+    }
+
+    public String getmEs() {
+        return mEs;
+    }
+
+    public void setmEs(String mEs) {
+        this.mEs = mEs;
     }
 }

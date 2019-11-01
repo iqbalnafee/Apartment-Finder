@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <!--<color name="colorPrimary">#008577</color>-->
+    <color name="colorPrimary">#26a69a</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!--<color name="colorAccent">#D81B60</color>-->
+    <color name="colorAccent">#048b7a</color>
     <color name="LightBlue">#ADD8E6</color>
+
+
 
     <color name="white">#FFFFFF</color>
     <color name="whiteTrans">#aaaaaa</color>
     <color name="black">#000000</color>
+    <color name="Darkblue">#6a67ce</color>
+    <color name="Teal">#008080</color>
+    <color name="Aqua">#00FFFF</color>
+    <color name="Yellow">#EEF507</color>
+    <color name="colorPurple_A400">#D500F9</color>
+    <color name="colorPurple_900">#4A148C</color>
+    <color name="colorAmber_A400">#FCEFC4</color>
+    <color name="colorAmber_900">#FF6F00</color>
+    <color name="colorGreen_A400">#00E676</color>
+    <color name="colorGreen_900">#1B5E20</color>
+    <color name="colorRed_A400">#FF1744</color>
+    <color name="colorRed_900">#B71C1C</color>
+    <color name="DeepRed">#FF0000</color>
+
+    <color name="colorAccentUserUi1">#048b7a</color>
+    <color name="colorAccentUserUi2">#048b7a</color>
+    <color name="colorAccentUserUi3">#048b7a</color>
+
+    <color name="colorPrimaryDarkAdminUi">#292b3d</color>
+    <!--<color name="colorAccent">#D81B60</color>-->
+    <color name="startblue">#09c6df</color>
+    <color name="endblue">#0bcce6</color>
+    <color name="graylightAdminUi">#fafafa</color>
+    <color name="LightGreen">#D8F3CF</color>
+
 </resources>

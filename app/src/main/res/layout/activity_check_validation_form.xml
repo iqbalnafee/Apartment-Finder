@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".CheckValidationForm">
+
+    <TextView
+        android:id="@+id/title"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="Validity Check"
+        android:textColor="@color/black"
+        android:layout_marginLeft="60dp"
+        android:textSize="45dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/email_show"
+        android:layout_below="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="21dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="14dp"
+        />
+
+    <TextView
+        android:id="@+id/FiName"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_toEndOf="@+id/fLabel"
+        android:layout_toRightOf="@id/fLabel"
+
+        android:text="First Name"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:id="@+id/fLabel"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="First Name:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/LaName"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/FiName"
+        android:layout_marginLeft="139dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Last Name:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/Llabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fLabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Last Name:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/ACVage"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LaName"
+        android:layout_marginLeft="139dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Date Of Birth:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/Agelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Llabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Date Of Birth:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/Sexlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Agelabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Sex:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/ACVsex"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ACVage"
+        android:layout_marginLeft="139dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Sex:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/Occlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Sexlabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Occupation:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/ACVocc"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ACVsex"
+        android:layout_marginLeft="139dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Occupation:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/Nidlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Occlabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Fixed Address:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/ACVnid"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ACVocc"
+        android:layout_marginLeft="139dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="NID or Passport:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/Choicelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Nidlabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Can be called?"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/ACVchoice"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ACVnid"
+        android:layout_marginLeft="139dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Rent Or Sell:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/MobileNumLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ACVchoice"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Mobile Number:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/MobileNum"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ACVchoice"
+        android:layout_marginLeft="139dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Rent Or Sell:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+    <ImageView
+        android:id="@+id/ImageNIDFront"
+        android:layout_below="@id/MobileNum"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+    <ImageView
+        android:id="@+id/ImageNIDBack"
+        android:layout_below="@id/MobileNum"
+        android:layout_toEndOf="@+id/ImageNIDFront"
+        android:layout_toRightOf="@+id/ImageNIDFront"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/result_list_Check"
+        android:layout_width="347dp"
+        android:layout_height="144dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="349dp"
+        android:layout_marginRight="59dp"></android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageNIDFront"
+        android:layout_marginTop="41dp"
+        android:text="Validate"
+        android:background="@color/colorGreen_A400"
+        android:layout_marginRight="200dp"
+        android:layout_marginLeft="50dp"
+        android:id="@+id/ValidateButton"
+        android:onClick="ClickValidate"/>
+
+    <Button
+        android:id="@+id/InValidateButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageNIDBack"
+        android:layout_marginTop="41dp"
+        android:layout_marginLeft="222dp"
+        android:background="@color/colorRed_A400"
+        android:text="InValidate"
+        android:layout_marginRight="18dp"
+        android:onClick="ClickInValidate"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/InValidateButton"
+
+        android:layout_marginLeft="135dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="39dp"
+        android:background="@color/com_facebook_blue"
+        android:onClick="HomeButton"
+        android:text="Home" />
+
+</RelativeLayout>
