@@ -42,7 +42,7 @@ public class AdminUi extends AppCompatActivity {
         //mValidityList=findViewById(R.id.ValidityList);
         mNotValYet=findViewById(R.id.NotValYet);
         mCountValNotif=findViewById(R.id.CountValNotif);
-        //mValidityList.setVisibility(View.INVISIBLE);
+
         ref= FirebaseDatabase.getInstance().getReference("ValidationForm");
 <<<<<<< HEAD
 
