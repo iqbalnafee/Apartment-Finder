@@ -39,6 +39,8 @@ public class ChatBot extends AppCompatActivity {
     private  static Chat chat;
     private ChatMessageAdapter adapter;
 
+    //test branch
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
