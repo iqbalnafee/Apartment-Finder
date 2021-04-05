@@ -70,11 +70,10 @@
         android:layout_alignStart="@+id/register_email"
         android:layout_alignRight="@+id/register_email"
         android:layout_alignEnd="@+id/register_email"
-<<<<<<< HEAD
+
         android:inputType="number"
-=======
->>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
-        android:hint="Mobile No."/>
+        />
+
 
     <EditText
         android:layout_width="match_parent"
