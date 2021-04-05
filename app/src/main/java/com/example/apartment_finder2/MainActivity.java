@@ -41,11 +41,9 @@ public class MainActivity extends AppCompatActivity  {
     private CardView mLoginOption;
     private CardView mloanCalc;
     private CardView mProfile;
-<<<<<<< HEAD
+
     private CardView mFaques,mfeed,mChtBot;
-=======
-    private CardView mFaques,mfeed;
->>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
+
     private Button mLogoutOption;
     private TextView mlogAndper;
     private CardView make_advertise;
@@ -71,16 +69,15 @@ public class MainActivity extends AppCompatActivity  {
         mSearch=findViewById(R.id.Cardsearch);
         mfeed=findViewById(R.id.FeedbackMessage2);
         img=findViewById(R.id.InOrOut);
-<<<<<<< HEAD
+
         mChtBot=findViewById(R.id.chtBot);
-=======
->>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
+
 
         ref=FirebaseDatabase.getInstance().getReference("ValidationForm");
         up=new UploadValidationForm();
 
         mSearch.setOnClickListener(new View.OnClickListener() {
-<<<<<<< HEAD
+
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(MainActivity.this, Search.class);
@@ -147,13 +144,13 @@ public class MainActivity extends AppCompatActivity  {
                 }
             }
         });
-=======
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(MainActivity.this, Search.class);
-                startActivity(intent1);
-            }
-        });
+
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent1 = new Intent(MainActivity.this, Search.class);
+//                startActivity(intent1);
+//            }
+//        });
 
         mfeed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,7 +203,7 @@ public class MainActivity extends AppCompatActivity  {
                 }
             }
         });
->>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
+
         /*mLogoutOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -335,10 +332,10 @@ public class MainActivity extends AppCompatActivity  {
         }
         else if(checker==1&&ValidationFlag==0)
         {
-            Intent intent1 = new Intent(this, ValidationForm.class);
-            intent1.putExtra("Email",str);
-            //Toast.makeText(MainActivity.this, "You sent " + str, Toast.LENGTH_LONG).show();
-            startActivity(intent1);
+//            Intent intent1 = new Intent(this, ValidationForm.class);
+//            intent1.putExtra("Email",str);
+//            //Toast.makeText(MainActivity.this, "You sent " + str, Toast.LENGTH_LONG).show();
+//            startActivity(intent1);
         }
         else if(checker==1&&ValidationFlag==1&&CheckValidation==0)
         {
@@ -389,43 +386,42 @@ public class MainActivity extends AppCompatActivity  {
     {
         Intent intent = new Intent(MainActivity.this, NewSubmission.class);
         intent.putExtra("DrawerType","Blog");
-<<<<<<< HEAD
+
         startActivity(intent);
     }
-    public void feedbackClick (View v)
-    {
-        if(checker==0)
-        {
-            AlertDialog alertDialog=builderAlertDialog("Sorry!","Your Must Log in First" ,true,MainActivity.this);
-            alertDialog.show();
-            return;
-        }
-        else
-        {
-            Intent intent = new Intent(MainActivity.this, FeedbackForm.class);
-            startActivity(intent);
-        }
-    }
-    public void faqClick (View v)
-    {
-        Intent intent = new Intent(MainActivity.this, NewSubmission.class);
-        intent.putExtra("DrawerType","faq");
-        startActivity(intent);
-    }
-    public void formSub(View v)
-    {
-        Intent intent = new Intent(MainActivity.this, icchamoto.class);
-        //intent.putExtra("DrawerType","faq");
-        startActivity(intent);
-    }
-    public void See(View v)
-    {
-        Intent intent = new Intent(MainActivity.this, icchamoto.class);
-        //intent.putExtra("DrawerType","faq");
-=======
->>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
-        startActivity(intent);
-    }
+//    public void feedbackClick (View v)
+//    {
+//        if(checker==0)
+//        {
+//            AlertDialog alertDialog=builderAlertDialog("Sorry!","Your Must Log in First" ,true,MainActivity.this);
+//            alertDialog.show();
+//            return;
+//        }
+//        else
+//        {
+//            Intent intent = new Intent(MainActivity.this, FeedbackForm.class);
+//            startActivity(intent);
+//        }
+//    }
+//    public void faqClick (View v)
+//    {
+//        Intent intent = new Intent(MainActivity.this, NewSubmission.class);
+//        intent.putExtra("DrawerType","faq");
+//        startActivity(intent);
+//    }
+//    public void formSub(View v)
+//    {
+//        Intent intent = new Intent(MainActivity.this, icchamoto.class);
+//        //intent.putExtra("DrawerType","faq");
+//        startActivity(intent);
+//    }
+//    public void See(View v)
+//    {
+//        Intent intent = new Intent(MainActivity.this, icchamoto.class);
+//        //intent.putExtra("DrawerType","faq");
+//
+//        startActivity(intent);
+//    }
     public void feedbackClick (View v)
     {
         if(checker==0)

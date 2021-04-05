@@ -376,11 +376,11 @@
             style="@style/com_facebook_button_like"
             android:layout_marginTop="30dp"
             android:text="Send Mail"
-<<<<<<< HEAD
+
             android:layout_marginLeft="40dp"
-=======
-            android:layout_marginLeft="70dp"
->>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
+
+
+
             android:id="@+id/MakeChat"
             android:background="@color/LightBlue"
             android:src="@drawable/ic_mail_black_24dp"
@@ -426,7 +426,7 @@
             android:onClick="ViewMap"
             />
 
-<<<<<<< HEAD
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -446,8 +446,6 @@
             android:onClick="clickMessage1"
             />
 
-=======
->>>>>>> 67ac8c87834660578fb47a5a5c66e7e16204cd6f
         <ImageView
             android:id="@+id/wish"
             android:layout_width="wrap_content"
